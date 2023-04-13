@@ -47,12 +47,12 @@ pygame.mixer.music.set_endevent(STOPPED_PLAYING)
 music = "one"
 arr = ["musik/хакатон_1.wav", "musik/3музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
 rand = random.choice(arr)
-print(rand)
+(rand)
 pygame.mixer.music.load(rand)
 pygame.mixer.music.play()
 pygame.mixer.music.set_volume(0.1)
 arr.remove(str(rand))
-print(arr)
+(arr)
 
 #-------------------------------------------------------------------------------------------------------------
 
@@ -539,7 +539,7 @@ c.after(20, gameloop)
 def Move_aim_down():
     global time2
     if is_playing:
-        print(time2)
+        (time2)
         x, y = c.coords(game_objects["aim2"])
         if y < 600:
             c.move(game_objects["aim2"], 0, vy)
@@ -790,7 +790,7 @@ def Player():
                 cor.append({"x": block.x, "y": block.y})
                 delete_block(block)
                 rand = random.randint(100, 501)
-                print(len(counter))
+                (len(counter))
                 count += rand
                 count3 += rand
                 count4 += rand
@@ -975,7 +975,7 @@ def provoke_for_time_sound():
             mxstate = 1
             return
         if mxstate == 1:
-            print(12)
+            (12)
             c.tag_raise(game_objects["not sound"], game_objects["base1"])
             mxstate = 0
             return
@@ -1004,7 +1004,7 @@ def provoke_sound(event):
         mxstate = 1
         return
     if 1210 <= event.x <= 1280 and 954 <= event.y <= 1024 and mxstate == 1:
-        print(12)
+        (12)
         c.tag_raise(game_objects["not sound"], game_objects["sound"])
         invisible(event)
         mxstate = 0
