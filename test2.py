@@ -845,7 +845,7 @@ def provoke_sound(event):
 
 c.bind("<Button-1>", provoke_sound)
 tk.bind('<Unmap>', invisible)
-tk.bind('<Map>', ff)
+#tk.bind('<Map>', ff)
 
 lab = Label(tk, text="Счёт:", font=("Comic Sans MS", 25), bg="black", fg="white")
 lab.grid(row=0, column=0)
