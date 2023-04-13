@@ -920,16 +920,16 @@ class MyControoler(Controller):
         Move_two_bul(None)
     def on_L3_down(self, value):
         x, y = c.coords(game_objects["aim2"])
-        if value == 32767 and y < 600:
+        if value == 15877 and y < 600:
             move_aim_down()
     def on_L3_left(self, value):
-        if value == -32767:
+        if value == -15877:
             move_aim_left()
     def on_L3_right(self, value):
-        if value == 32767:
+        if value == 15877:
             move_aim_right()
     def on_L3_up(self, value):
-        if value == -32767:
+        if value == -15877:
             move_aim_up()
 
 
