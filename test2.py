@@ -325,7 +325,7 @@ def click2(event):
             time4 = 0
             a = 15000
             t = 0
-            time2 = 6240
+            time2 = 3240
             flag = "True"
             station = "game"
             draw_images()
