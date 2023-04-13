@@ -609,7 +609,6 @@ def gameloop():
     FRAMEEND = time.time()
 
     FRAMESIZE = int((FRAMEEND - FRAMESTART) * 1000)
-    print(FRAMESIZE)
     c.after(max(0, 20 - FRAMESIZE), gameloop)
 
 
