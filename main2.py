@@ -14,18 +14,6 @@ from operator import itemgetter
 # os.chdir(sys._MEIPASS)
 from pyPS4Controller.controller import Controller
 
-class MyControoler(Controller):
-    def __init__(self, **kwargs):
-        Controller.__init__(self, **kwargs)
-    def on_x_press(self):
-        selected_blue_cannon()
-    def on_x_release(self):
-        print("Goodbye")
-
-
-controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
-controller.on_x_press()
-controller.on_x_release()
 
 
 tk = Tk()
@@ -767,7 +755,7 @@ def selected_green_cannon(event):
             c.tag_lower(game_objects["cannon_red"], game_objects["not sound"])
 
 
-def selected_blue_cannon(event):
+def selected_blue_cannon():
     global state, flag5, flag14, flag6
     if is_playing:
         state = "blue"
@@ -920,5 +908,19 @@ lab = Label(tk, text="Счёт:", font=("Comic Sans MS", 25), bg="black", fg="wh
 lab.grid(row=0, column=0)
 lab2 = Label(tk, textvariable=random_var, font=("Comic Sans MS", 25), fg="black")
 lab2.grid(row=0, column=1)
+
+
+class MyControoler(Controller):
+    def __init__(self, **kwargs):
+        Controller.__init__(self, **kwargs)
+    def on_x_press(self):
+        selected_blue_cannon()
+    def on_x_release(self):
+        print("Goodbye")
+
+
+controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
+controller.on_x_press()
+controller.on_x_release()
 
 mainloop()
