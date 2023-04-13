@@ -369,6 +369,8 @@ count3 = 0
 count4 = 0
 count5 = 0
 mxstate = 0
+
+
 def gameloop():
     global station, is_playing, time0, frame
     global arr, music, vy
@@ -381,6 +383,19 @@ def gameloop():
     counter = []
     time4 += 5
     cor = []
+    if station == "menu":
+        is_playing = False
+        draw_menu()
+    if station == "menu2":
+        is_playing = False
+        time0 = 0
+    if station == "menu3":
+        is_playing = False
+        draw_menu2()
+    if station == "game":
+        is_playing = True
+        time0 += 20
+
     if len(arr) == 0:
         arr = ["musik/хакатон_1.wav", "3musik/музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
     for event in pygame.event.get():
@@ -409,18 +424,6 @@ def gameloop():
             pygame.mixer.music.play()
             music = "one"
             continue
-    if station == "menu":
-        is_playing = False
-        draw_menu()
-    if station == "menu2":
-        is_playing = False
-        time0 = 0
-    if station == "menu3":
-        is_playing = False
-        draw_menu2()
-    if station == "game":
-        is_playing = True
-        time0 += 20
 
     if flag == "False":
         is_playing = False
