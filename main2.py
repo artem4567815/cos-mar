@@ -639,10 +639,10 @@ def Move_bullet():
             for block in blocks:
                 if i.tx == block.x and i.ty == block.y and same_color(i, block):
                     block.is_bullet = False
-    c.after(10, Move_bullet)
+    c.after(5, Move_bullet)
 
 
-c.after(10, Move_bullet)
+c.after(5, Move_bullet)
 
 
 def Layer():
