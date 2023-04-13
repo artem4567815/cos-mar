@@ -49,6 +49,9 @@ pygame.mixer.music.set_endevent(STOPPED_PLAYING)
 music = "one"
 arr = ["musik/хакатон_1.wav", "musik/3музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
 rand = random.choice(arr)
+
+print("Playing ", rand)
+
 pygame.mixer.music.load(rand)
 pygame.mixer.music.play()
 pygame.mixer.music.set_volume(0.1)
@@ -398,6 +401,10 @@ def gameloop():
         arr = ["musik/хакатон_1.wav", "3musik/музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
     for event in pygame.event.get():
         rand = random.choice(arr)
+
+        if STOPPED_PLAYING == event.type:
+            print("New music ", rand)
+
         if STOPPED_PLAYING == event.type and music == "one":
             pygame.mixer.music.load(rand)
             arr.remove(rand)
@@ -808,10 +815,12 @@ tk.bind("<KeyPress>", TK_PRESS)
 
 
 def invisible(event):
+    print("Pausing music")
     pygame.mixer.music.pause()
 
 
 def ff(event):
+    print("resuming music")
     pygame.mixer.music.unpause()
 
 
