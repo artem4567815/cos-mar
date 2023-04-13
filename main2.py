@@ -906,9 +906,8 @@ class MyControoler(Controller):
         selected_red_cannon(None)
     def on_R2_release(self):
         Move_two_bul(None)
-    def on_L3_down(self, value):
+    def on_L3_down(self, value = 32676):
         global is_playing, time2
-        self.value = 32767
         if is_playing:
             x, y = c.coords(game_objects["aim2"])
             if y < 600:
