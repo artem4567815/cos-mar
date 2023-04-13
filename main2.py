@@ -610,7 +610,8 @@ def spawn_bullet(color):
             x1 += 68
             y1 += 68
             if i.x < x1 <= i.x + 136 and i.y <= y1 <= i.y + 136 and i.is_bullet:
-                bullet1 = Bullet(c, i.x, i.y,
+                print(x1, y1, i.y)
+                bullet1 = Bullet(c, x1, y1,
                                  c.create_image(*coordinates_for_color[state], image=images[f"bullet_create_{color}"],
                                                 anchor=NW), color)
                 c.tag_raise(bullet1.image)
@@ -633,15 +634,15 @@ def Move_bullet():
             coef = 800 / (s2 + 0.000000000000000000000000001)
             dy = -int((i.y - i.ty)) * coef
             c.move(i.image, int((i.tx - i.x) * coef), dy)
-            if s2 < 400:
+            if s2 < 800:
                 c.coords(i.image, i.tx, i.ty)
             for block in blocks:
                 if i.tx == block.x and i.ty == block.y and same_color(i, block):
                     block.is_bullet = False
-    c.after(5, Move_bullet)
+    c.after(10, Move_bullet)
 
 
-c.after(5, Move_bullet)
+c.after(10, Move_bullet)
 
 
 def Layer():
