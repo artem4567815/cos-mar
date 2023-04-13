@@ -1,5 +1,6 @@
 from pyPS4Controller.controller import Controller
 
+
 class MyControoler(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
