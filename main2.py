@@ -516,18 +516,18 @@ def Move_bullet():
         for i in bullets:
             s = (i.tx - i.x) ** 2 + (i.y - i.ty) ** 2
             s2 = math.sqrt(s)
-            coef = 800 / (s2 + 0.000000000000000000000000001)
+            coef = 1600 / (s2 + 0.000000000000000000000000001)
             dy = -int((i.y - i.ty)) * coef
             c.move(i.image, int((i.tx - i.x) * coef), dy)
-            if s2 < 800:
+            if s2 < 1600:
                 c.coords(i.image, i.tx, i.ty)
             for block in blocks:
                 if i.tx == block.x and i.ty == block.y and same_color(i, block):
                     block.is_bullet = False
-    c.after(5, Move_bullet)
+    c.after(1, Move_bullet)
 
 
-c.after(5, Move_bullet)
+c.after(1, Move_bullet)
 
 
 def Layer():
@@ -904,6 +904,6 @@ class MyControoler(Controller):
 
 
 controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
-spam_thread = Thread(target=lambda: controller.listen(timeout=60))
-spam_thread.start()
+# spam_thread = Thread(target=lambda: controller.listen(timeout=60))
+# spam_thread.start()
 mainloop()
