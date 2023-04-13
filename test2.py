@@ -99,43 +99,6 @@ vx4 = 0.12
 vx5 = 0.016
 vx6 = 0.014
 vx7 = 0.2
-
-def Move_star():
-    global arr, music
-    if len(arr) == 0:
-        arr = ["musik/хакатон_1.wav", "3musik/музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
-    for event in pygame.event.get():
-        rand = random.choice(arr)
-        if STOPPED_PLAYING == event.type and music == "one":
-            pygame.mixer.music.load(rand)
-            arr.remove(rand)
-            pygame.mixer.music.play()
-            music = "two"
-            continue
-        if STOPPED_PLAYING == event.type and music == "two":
-            pygame.mixer.music.load(rand)
-            arr.remove(rand)
-            pygame.mixer.music.play()
-            music = "three"
-            continue
-        if STOPPED_PLAYING == event.type and music == "three":
-            pygame.mixer.music.load(rand)
-            arr.remove(rand)
-            pygame.mixer.music.play()
-            music = "four"
-            continue
-        if STOPPED_PLAYING == event.type and music == "four":
-            pygame.mixer.music.load(rand)
-            arr.remove(rand)
-            pygame.mixer.music.play()
-            music = "one"
-            continue
-
-    c.after(50, Move_star)
-
-
-c.after(50, Move_star)
-
 #-----------------------------------------------------------------------------------------------------------------------
 
 images = {
@@ -245,7 +208,7 @@ flag15 = False
 flag16 = True
 
 
-time2 = 6250
+time2 = 3240
 objects = []
 station = "menu"
 time4 = 0
@@ -362,7 +325,7 @@ def click2(event):
             time4 = 0
             a = 15000
             t = 0
-            time2 = 6250
+            time2 = 6240
             flag = "True"
             station = "game"
             draw_images()
@@ -401,9 +364,51 @@ def click2(event):
         else:
             station = "menu3"
 
-
+frame = 0
+count3 = 0
+count4 = 0
+count5 = 0
+mxstate = 0
 def gameloop():
-    global station, is_playing, time0
+    global station, is_playing, time0, frame
+    global arr, music, vy
+    global time5, flag15, flag, life
+    global count, time2, time4, a, t, count2, time5, flag15, count3, count4, count5, flag, is_playing
+    global is_playing, count, station, life, flag, time0, bonus, entry2, mxstate
+    frame += 20
+    should_delete = []
+    neightboor2 = []
+    counter = []
+    time4 += 5
+    cor = []
+    if len(arr) == 0:
+        arr = ["musik/хакатон_1.wav", "3musik/музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
+    for event in pygame.event.get():
+        rand = random.choice(arr)
+        if STOPPED_PLAYING == event.type and music == "one":
+            pygame.mixer.music.load(rand)
+            arr.remove(rand)
+            pygame.mixer.music.play()
+            music = "two"
+            continue
+        if STOPPED_PLAYING == event.type and music == "two":
+            pygame.mixer.music.load(rand)
+            arr.remove(rand)
+            pygame.mixer.music.play()
+            music = "three"
+            continue
+        if STOPPED_PLAYING == event.type and music == "three":
+            pygame.mixer.music.load(rand)
+            arr.remove(rand)
+            pygame.mixer.music.play()
+            music = "four"
+            continue
+        if STOPPED_PLAYING == event.type and music == "four":
+            pygame.mixer.music.load(rand)
+            arr.remove(rand)
+            pygame.mixer.music.play()
+            music = "one"
+            continue
     if station == "menu":
         is_playing = False
         draw_menu()
@@ -416,24 +421,186 @@ def gameloop():
     if station == "game":
         is_playing = True
         time0 += 20
+
+    if flag == "False":
+        is_playing = False
+        station = "menu2"
+        entry2.grid(row=0, column=4)
+        c.delete(game_objects["base1"])
+        c.delete(game_objects["aim2"])
+        c.delete(game_objects["aim"])
+        c.delete(game_objects["cannon_green"])
+        c.delete(game_objects["cannon_blue"])
+        c.delete(game_objects["cannon_red"])
+        c.delete(game_objects["selected1"])
+        c.delete(game_objects["selected2"])
+        c.delete(game_objects["selected3"])
+        c.delete(game_objects["hp5"])
+        c.delete(game_objects["hp4"])
+        c.delete(game_objects["hp3"])
+        c.delete(game_objects["hp2"])
+        c.delete(game_objects["hp"])
+        if "life1" in black_life:
+            c.delete(black_life["life1"])
+        if "life2" in black_life:
+            c.delete(black_life["life2"])
+        if "life3" in black_life:
+            c.delete(black_life["life3"])
+        if "life4" in black_life:
+            c.delete(black_life["life4"])
+        if "life5" in black_life:
+            c.delete(black_life["life5"])
+        c.delete(game_objects["dead_line"])
+        for block in blocks[:]:
+            delete_block(block)
+        for bullet in bullets[:]:
+            delete_bullet(bullet.image)
+            bullets.remove(bullet)
+    if station == "menu2":
+        is_playing = False
+        time0 = 0
+        draw_menu2()
+
+    if is_playing:
+        if frame % time2 == 0:
+            x, y = c.coords(game_objects["aim2"])
+            if y < 600:
+                c.move(game_objects["aim2"], 0, vy)
+                c.move(game_objects["aim"], 0, vy)
+            x = 30
+            for _ in range(9):
+                cc = random.choice(list(color))
+                block1 = Block(c, c.create_image(x, -136, image=color[cc], anchor=NW), cc, True)
+                x += 136
+                blocks.append(block1)
+            for i in blocks:
+                res1 = i.image
+                c.tag_raise(game_objects["aim2"], res1)
+                c.move(res1, 0, vy)
+            for j in bullets:
+                j.ty += vy
+
+        for i in bullets:
+            s = (i.tx - i.x) ** 2 + (i.y - i.ty) ** 2
+            s2 = math.sqrt(s)
+            coef = 1600 / (s2 + 0.000000000000000000000000001)
+            dy = -int((i.y - i.ty)) * coef
+            c.move(i.image, int((i.tx - i.x) * coef), dy)
+            if s2 < 1600:
+                c.coords(i.image, i.tx, i.ty)
+            for block in blocks:
+                if i.tx == block.x and i.ty == block.y and same_color(i, block):
+                    block.is_bullet = False
+
+        for block in blocks[:]:
+            if block.y + 136 > 820:
+                flag = "False"
+        c.tag_raise("down")
+        c.tag_raise("down2")
+        if life == 5:
+            c.tag_raise(game_objects["aim2"], game_objects["aim2"])
+        if time5 != 0 and flag15:
+            time5 -= 5
+        if time5 == 0:
+            c.tag_raise(game_objects["aim2"], game_objects["aim"])
+            flag15 = False
+            time5 = 50
+
+
+
+        if time4 == 1000:
+            t += 1
+            time4 = 0
+            a = a + (a * (t / 6000))
+        for bullet in bullets[:]:
+            if not bullet.is_finished():
+                continue
+            for block in blocks[:]:
+                if bullet_intersects_block(bullet, block):
+                    if not same_color(bullet, block):
+                        life_funk()
+                        block.is_bullet = True
+                        bullets.remove(bullet)
+                        delete_bullet(bullet.image)
+                        break
+                    else:
+                        if block not in should_delete:
+                            should_delete.append(block)
+                            counter.append(block)
+                        bullets.remove(bullet)
+                        delete_bullet(bullet.image)
+                        break
+
+        while len(should_delete) != 0:
+            for block in should_delete[:]:
+                for neightboor in blocks[:]:
+                    if is_neightboor(block, neightboor) and same_color(block, neightboor):
+                        if neightboor not in should_delete and neightboor not in neightboor2:
+                            neightboor2.append(neightboor)
+                            counter.append(neightboor)
+                cor.append({"x": block.x, "y": block.y})
+                delete_block(block)
+                rand = random.randint(100, 501)
+                (len(counter))
+                count += rand
+                count3 += rand
+                count4 += rand
+                count5 += rand
+                list_count.append(rand)
+                for i in range(len(list_count)):
+                    count2 += list_count[i]
+                    if len(counter) >= 4:
+                        count -= sum(list_count[0:3])
+                        count2 -= sum(list_count[0:3])
+                    list_count.remove(list_count[i])
+                if count2 >= a:
+                    count2 = 0
+                    time2 -= 400
+
+            should_delete = neightboor2
+            neightboor2 = []
+        if 4 <= len(counter) <= 7:
+            count3 *= 1.5
+            count += count3
+            count2 += count3
+            bonus.append({"bonus": c.create_image(cor[0]["x"], cor[0]["y"] + 40, image=images["1.5x"], anchor=NW),
+                          "time": time.time()})
+        if 8 <= len(counter) <= 10:
+            count4 *= 2
+            count += count4
+            count2 += count4
+            bonus.append({"bonus": c.create_image(cor[0]["x"], cor[0]["y"] + 40, image=images["2x"], anchor=NW),
+                          "time": time.time()})
+        if len(counter) >= 11:
+            count5 *= 3
+            count += count5
+            count2 += count5
+            bonus.append({"bonus": c.create_image(cor[0]["x"], cor[0]["y"] + 40, image=images["3x"], anchor=NW),
+                          "time": time.time()})
+
+        for k in bonus[:]:
+            if time.time() - k["time"] > 3:
+                bonus.remove(k)
+                delete_bullet(k["bonus"])
+            if flag == "False":
+                bonus.remove(k)
+                delete_bullet(k["bonus"])
+        count3 = 0
+        count4 = 0
+        count5 = 0
+        random_var.set(str(count))
+
+        if mxstate == 0:
+            c.tag_raise(game_objects["sound"], game_objects["base1"])
+        if mxstate == 1:
+            c.tag_raise(game_objects["not sound"], game_objects["base1"])
+
     c.after(20, gameloop)
 
 
 c.after(20, gameloop)
 
 
-def Move_aim_down():
-    global time2
-    if is_playing:
-        print(time2)
-        x, y = c.coords(game_objects["aim2"])
-        if y < 600:
-            c.move(game_objects["aim2"], 0, vy)
-            c.move(game_objects["aim"], 0, vy)
-    c.after(time2, Move_aim_down)
-
-
-c.after(time2, Move_aim_down)
 
 
 def Move_aim(key):
@@ -470,34 +637,6 @@ def move_aim_up():
     c.move(game_objects["aim2"], 0, -136)
     c.move(game_objects["aim"], 0, -136)
 
-def spawn_squ():
-    global time2
-    x = 30
-    if is_playing:
-        for _ in range(9):
-            cc = random.choice(list(color))
-            block1 = Block(c, c.create_image(x, -136, image=color[cc], anchor=NW), cc, True)
-            x += 136
-            blocks.append(block1)
-    c.after(time2, spawn_squ)
-
-
-c.after(time2, spawn_squ)
-
-
-def Move_squ():
-    global vy, time2
-    if is_playing:
-        for i in blocks:
-            res1 = i.image
-            c.tag_raise(game_objects["aim2"], res1)
-            c.move(res1, 0, vy)
-        for j in bullets:
-            j.ty += vy
-    c.after(time2, Move_squ)
-
-
-c.after(time2, Move_squ)
 
 
 def spawn_bullet(color):
@@ -528,46 +667,6 @@ def Move_two_bul(event):
 
 tk.bind("<space>", Move_two_bul)
 
-
-def Move_bullet():
-    if is_playing:
-        for i in bullets:
-            s = (i.tx - i.x) ** 2 + (i.y - i.ty) ** 2
-            s2 = math.sqrt(s)
-            coef = 1600 / (s2 + 0.000000000000000000000000001)
-            dy = -int((i.y - i.ty)) * coef
-            c.move(i.image, int((i.tx - i.x) * coef), dy)
-            if s2 < 1600:
-                c.coords(i.image, i.tx, i.ty)
-            for block in blocks:
-                if i.tx == block.x and i.ty == block.y and same_color(i, block):
-                    block.is_bullet = False
-    c.after(5, Move_bullet)
-
-
-c.after(5, Move_bullet)
-
-
-def Layer():
-    global time5, flag15, flag, life
-    if is_playing:
-        for block in blocks[:]:
-            if block.y + 136 > 820:
-                flag = "False"
-        c.tag_raise("down")
-        c.tag_raise("down2")
-        if life == 5:
-            c.tag_raise(game_objects["aim2"], game_objects["aim2"])
-        if time5 != 0 and flag15:
-            time5 -= 5
-        if time5 == 0:
-            c.tag_raise(game_objects["aim2"], game_objects["aim"])
-            flag15 = False
-            time5 = 50
-    c.after(5, Layer)
-
-
-c.after(5, Layer)
 
 
 def bullet_intersects_block(bullet, block):
@@ -648,105 +747,6 @@ def delete_bullet(bullet):
     c.delete(b1)
 
 
-count3 = 0
-count4 = 0
-count5 = 0
-
-
-def Player():
-    global count, time2, time4, a, t, count2, time5, flag15, count3, count4, count5, flag, is_playing
-    should_delete = []
-    neightboor2 = []
-    counter = []
-    time4 += 5
-    cor = []
-    if time4 == 1000:
-        t += 1
-        time4 = 0
-        a = a + (a * (t / 6000))
-    if is_playing:
-        for bullet in bullets[:]:
-            if not bullet.is_finished():
-                continue
-            for block in blocks[:]:
-                if bullet_intersects_block(bullet, block):
-                    if not same_color(bullet, block):
-                        life_funk()
-                        block.is_bullet = True
-                        bullets.remove(bullet)
-                        delete_bullet(bullet.image)
-                        break
-                    else:
-                        if block not in should_delete:
-                            should_delete.append(block)
-                            counter.append(block)
-                        bullets.remove(bullet)
-                        delete_bullet(bullet.image)
-                        break
-
-        while len(should_delete) != 0:
-            for block in should_delete[:]:
-                for neightboor in blocks[:]:
-                    if is_neightboor(block, neightboor) and same_color(block, neightboor):
-                        if neightboor not in should_delete and neightboor not in neightboor2:
-                            neightboor2.append(neightboor)
-                            counter.append(neightboor)
-                cor.append({"x": block.x, "y": block.y})
-                delete_block(block)
-                rand = random.randint(100, 501)
-                (len(counter))
-                count += rand
-                count3 += rand
-                count4 += rand
-                count5 += rand
-                list_count.append(rand)
-                for i in range(len(list_count)):
-                    count2 += list_count[i]
-                    if len(counter) >= 4:
-                        count -= sum(list_count[0:3])
-                        count2 -= sum(list_count[0:3])
-                    list_count.remove(list_count[i])
-                if count2 >= a:
-                    count2 = 0
-                    time2 -= 400
-
-                # print(" Счет: " + str(count) + '\n', "Теорема времени: " + str(a) + '\n', "Время: " + str(t) +
-                #       '\n', "Время игры: " + str(time4) + '\n', "time2: " + str(time2) + '\n',
-                #       "----------------------------------")
-            should_delete = neightboor2
-            neightboor2 = []
-        if 4 <= len(counter) <= 7:
-            count3 *= 1.5
-            count += count3
-            count2 += count3
-            bonus.append({"bonus": c.create_image(cor[0]["x"], cor[0]["y"] + 40, image=images["1.5x"], anchor=NW), "time": time.time()})
-        if 8 <= len(counter) <= 10:
-            count4 *= 2
-            count += count4
-            count2 += count4
-            bonus.append({"bonus": c.create_image(cor[0]["x"], cor[0]["y"] + 40, image=images["2x"], anchor=NW), "time": time.time()})
-        if len(counter) >= 11:
-            count5 *= 3
-            count += count5
-            count2 += count5
-            bonus.append({"bonus": c.create_image(cor[0]["x"], cor[0]["y"] + 40, image=images["3x"], anchor=NW), "time": time.time()})
-
-        for k in bonus[:]:
-            if time.time() - k["time"] > 3:
-                bonus.remove(k)
-                delete_bullet(k["bonus"])
-            if flag == "False":
-                bonus.remove(k)
-                delete_bullet(k["bonus"])
-        count3 = 0
-        count4 = 0
-        count5 = 0
-        random_var.set(str(count))
-
-    c.after(5, Player)
-
-
-c.after(5, Player)
 
 
 def selected_green_cannon(event):
@@ -802,70 +802,8 @@ def TK_PRESS(key):
 
 
 entry2 = ttk.Entry(width=15, font=("Ariel", 20))
-def you_lose():
-    global is_playing, count, station, life, flag, time0, bonus, entry2
-    if flag == "False":
-        is_playing = False
-        station = "menu2"
-        entry2.grid(row=0, column=4)
-        c.delete(game_objects["base1"])
-        c.delete(game_objects["aim2"])
-        c.delete(game_objects["aim"])
-        c.delete(game_objects["cannon_green"])
-        c.delete(game_objects["cannon_blue"])
-        c.delete(game_objects["cannon_red"])
-        c.delete(game_objects["selected1"])
-        c.delete(game_objects["selected2"])
-        c.delete(game_objects["selected3"])
-        c.delete(game_objects["hp5"])
-        c.delete(game_objects["hp4"])
-        c.delete(game_objects["hp3"])
-        c.delete(game_objects["hp2"])
-        c.delete(game_objects["hp"])
-        if "life1" in black_life:
-            c.delete(black_life["life1"])
-        if "life2" in black_life:
-            c.delete(black_life["life2"])
-        if "life3" in black_life:
-            c.delete(black_life["life3"])
-        if "life4" in black_life:
-            c.delete(black_life["life4"])
-        if "life5" in black_life:
-            c.delete(black_life["life5"])
-        c.delete(game_objects["dead_line"])
-        for block in blocks[:]:
-            delete_block(block)
-        for bullet in bullets[:]:
-            delete_bullet(bullet.image)
-            bullets.remove(bullet)
-    if station == "menu2":
-        is_playing = False
-        time0 = 0
-        draw_menu2()
-
-    c.after(50, you_lose)
-
-
-c.after(50, you_lose)
 
 tk.bind("<KeyPress>", TK_PRESS)
-
-
-def provoke_for_time_sound():
-    global mxstate
-    if is_playing:
-        if mxstate == 0:
-            c.tag_raise(game_objects["sound"], game_objects["base1"])
-            mxstate = 1
-            return
-        if mxstate == 1:
-            c.tag_raise(game_objects["not sound"], game_objects["base1"])
-            mxstate = 0
-            return
-    c.after(5, provoke_for_time_sound)
-
-
-c.after(5, provoke_for_time_sound)
 
 
 def invisible(event):
@@ -875,8 +813,6 @@ def invisible(event):
 def ff(event):
     pygame.mixer.music.unpause()
 
-
-mxstate = 0
 
 
 def provoke_sound(event):
