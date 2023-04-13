@@ -18,8 +18,7 @@ class MyControoler(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
     def on_x_press(self):
-        global color
-        color = "blue"
+        selected_blue_cannon()
     def on_x_release(self):
         print("Goodbye")
 
@@ -439,7 +438,6 @@ c.after(20, gameloop)
 def Move_aim_down():
     global time2
     if is_playing:
-        (time2)
         x, y = c.coords(game_objects["aim2"])
         if y < 600:
             c.move(game_objects["aim2"], 0, vy)
@@ -876,7 +874,6 @@ def provoke_for_time_sound():
             mxstate = 1
             return
         if mxstate == 1:
-            (12)
             c.tag_raise(game_objects["not sound"], game_objects["base1"])
             mxstate = 0
             return
@@ -905,7 +902,6 @@ def provoke_sound(event):
         mxstate = 1
         return
     if 1210 <= event.x <= 1280 and 954 <= event.y <= 1024 and mxstate == 1:
-        (12)
         c.tag_raise(game_objects["not sound"], game_objects["sound"])
         invisible(event)
         mxstate = 0
