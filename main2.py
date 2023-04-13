@@ -913,7 +913,7 @@ class MyControoler(Controller):
             if y < 600:
                 c.move(game_objects["aim2"], 0, vy)
                 c.move(game_objects["aim"], 0, vy)
-
+        print(value)
         if value == 32767:
             move_aim_down()
 
