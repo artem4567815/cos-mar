@@ -18,7 +18,8 @@ class MyControoler(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
     def on_x_press(self):
-        spawn_bullet(color)
+        global color
+        color = "blue"
     def on_x_release(self):
         print("Goodbye")
 
