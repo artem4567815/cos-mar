@@ -913,7 +913,7 @@ class MyControoler(Controller):
             if y < 600:
                 c.move(game_objects["aim2"], 0, vy)
                 c.move(game_objects["aim"], 0, vy)
-        tk.after(time2, move_aim_down)
+        tk.after(10000, move_aim_down)
 
 
 controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
