@@ -755,7 +755,7 @@ def selected_green_cannon(event):
             c.tag_lower(game_objects["cannon_red"], game_objects["not sound"])
 
 
-def selected_blue_cannon():
+def selected_blue_cannon(event):
     global state, flag5, flag14, flag6
     if is_playing:
         state = "blue"
@@ -914,7 +914,7 @@ class MyControoler(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
     def on_x_press(self):
-        selected_blue_cannon()
+        selected_blue_cannon(None)
     def on_x_release(self):
         print("Goodbye")
 
