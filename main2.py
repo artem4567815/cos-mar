@@ -915,12 +915,9 @@ class MyControoler(Controller):
         Controller.__init__(self, **kwargs)
     def on_x_press(self):
         selected_blue_cannon(None)
-    def on_x_release(self):
-        print("Goodbye")
 
 
 controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
 controller.on_x_press()
-controller.on_x_release()
 
 mainloop()
