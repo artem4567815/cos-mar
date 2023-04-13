@@ -20,7 +20,7 @@ style = ttk.Style()
 style.configure("BW.TLabel", foreground="white", background="black")
 style.map('BW.TLabel', background=[('selected', 'white')], foreground=[('selected', 'black')])
 tk.geometry("1280x1070")
-tk.attributes("-fullscreen", True)
+#tk.attributes("-fullscreen", True)
 c = Canvas(tk, width=1280, height=1024, bg="white")
 c.grid(row=2, columnspan=20)
 tk["bg"] = "black"
@@ -470,6 +470,7 @@ def gameloop():
         draw_menu2()
 
     if is_playing:
+        print(frame)
         if frame % time2 == 0:
             x, y = c.coords(game_objects["aim2"])
             if y < 600:
