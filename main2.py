@@ -914,9 +914,7 @@ class MyControoler(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
     def on_x_press(self):
-        global state
-        #selected_blue_cannon()
-        state = "blue"
+        selected_blue_cannon()
     def on_x_release(self):
         print("Goodbye")
 
