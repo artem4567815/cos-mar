@@ -918,6 +918,6 @@ class MyControoler(Controller):
 
 
 controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
-controller.on_x_press()
+controller.listen(timeout=60)
 
 mainloop()
