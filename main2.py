@@ -20,7 +20,7 @@ style = ttk.Style()
 style.configure("BW.TLabel", foreground="white", background="black")
 style.map('BW.TLabel', background=[('selected', 'white')], foreground=[('selected', 'black')])
 tk.geometry("1280x1070")
-tk.attributes("-fullscreen", True)
+#tk.attributes("-fullscreen", True)
 c = Canvas(tk, width=1280, height=1024, bg="white")
 c.grid(row=2, columnspan=20)
 tk["bg"] = "black"
@@ -425,6 +425,7 @@ c.after(20, gameloop)
 def Move_aim_down():
     global time2
     if is_playing:
+        print(time2)
         x, y = c.coords(game_objects["aim2"])
         if y < 600:
             c.move(game_objects["aim2"], 0, vy)
@@ -524,10 +525,10 @@ def Move_bullet():
             for block in blocks:
                 if i.tx == block.x and i.ty == block.y and same_color(i, block):
                     block.is_bullet = False
-    c.after(1, Move_bullet)
+    c.after(5, Move_bullet)
 
 
-c.after(1, Move_bullet)
+c.after(5, Move_bullet)
 
 
 def Layer():
@@ -894,7 +895,6 @@ class MyControoler(Controller):
         Controller.__init__(self, **kwargs)
     def on_x_press(self):
         selected_blue_cannon(None)
-
     def on_square_press(self):
         selected_green_cannon(None)
     def on_circle_press(self):
@@ -903,7 +903,8 @@ class MyControoler(Controller):
         Move_two_bul(None)
 
 
+
 controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
-# spam_thread = Thread(target=lambda: controller.listen(timeout=60))
-# spam_thread.start()
+spam_thread = Thread(target=lambda: controller.listen(timeout=60))
+spam_thread.start()
 mainloop()
