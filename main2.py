@@ -18,7 +18,7 @@ class MyControoler(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
     def on_x_press(self):
-        spawn_bullet()
+        spawn_bullet(color)
     def on_x_release(self):
         print("Goodbye")
 
@@ -62,12 +62,10 @@ pygame.mixer.music.set_endevent(STOPPED_PLAYING)
 music = "one"
 arr = ["musik/хакатон_1.wav", "musik/3музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
 rand = random.choice(arr)
-(rand)
 pygame.mixer.music.load(rand)
 pygame.mixer.music.play()
 pygame.mixer.music.set_volume(0.1)
 arr.remove(str(rand))
-(arr)
 
 #-------------------------------------------------------------------------------------------------------------
 
