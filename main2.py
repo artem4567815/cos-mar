@@ -914,6 +914,12 @@ class MyControoler(Controller):
         Controller.__init__(self, **kwargs)
     def on_x_press(self):
         selected_blue_cannon(None)
+    def on_square_press(self):
+        selected_green_cannon(None)
+    def on_circle_press(self):
+        selected_red_cannon(None)
+    def on_R2_release(self):
+        Move_two_bul(None)
 
 
 controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
