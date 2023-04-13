@@ -919,7 +919,7 @@ class MyControoler(Controller):
         Move_two_bul(None)
 
 
-# controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
-# spam_thread = Thread(target=lambda:controller.listen(timeout=60))
-# spam_thread.start()
+controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
+spam_thread = Thread(target=lambda:controller.listen(timeout=60))
+spam_thread.start()
 mainloop()
