@@ -917,9 +917,6 @@ class MyControoler(Controller):
 
 
 controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
-
-controller.listen(timeout=60)
-
 spam_thread = Thread(target=controller.listen(timeout=60))
 spam_thread.start()
 mainloop()
