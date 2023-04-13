@@ -452,6 +452,11 @@ def Move_aim(key):
             c.move(game_objects["aim2"], 0, 136)
             c.move(game_objects["aim"], 0, 136)
 
+def move_aim_down():
+    if is_playing:
+        c.move(game_objects["aim2"], 0, 136)
+        c.move(game_objects["aim"], 0, 136)
+
 
 def spawn_squ():
     global time2
@@ -901,7 +906,8 @@ class MyControoler(Controller):
         selected_red_cannon(None)
     def on_R2_release(self):
         Move_two_bul(None)
-
+    def on_L3_down(self, value):
+        move_aim_down()
 
 
 controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
