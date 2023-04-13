@@ -906,6 +906,7 @@ lab.grid(row=0, column=0)
 lab2 = Label(tk, textvariable=random_var, font=("Comic Sans MS", 25), fg="black")
 lab2.grid(row=0, column=1)
 
+flag30 = True
 
 class MyControoler(Controller):
     def __init__(self, **kwargs):
@@ -919,9 +920,14 @@ class MyControoler(Controller):
     def on_R2_release(self):
         Move_two_bul(None)
     def on_L3_down(self, value):
+        global flag30
         x, y = c.coords(game_objects["aim2"])
-        if value == 15877 and y < 600:
+        if flag30 and y < 600:
             move_aim_down()
+            flag30 = False
+    def on_L3_y_at_rest(self):
+        global flag30
+        flag30 = True
     def on_L3_left(self, value):
         if value == -15877:
             move_aim_left()
@@ -929,7 +935,8 @@ class MyControoler(Controller):
         if value == 15877:
             move_aim_right()
     def on_L3_up(self, value):
-        if value == -15877:
+        global flag30
+        if flag30:
             move_aim_up()
 
 
