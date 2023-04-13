@@ -373,6 +373,9 @@ mxstate = 0
 
 
 def gameloop():
+
+    FRAMESTART = time.time()
+
     global station, is_playing, time0, frame
     global arr, music, vy
     global time5, flag15, flag, life
@@ -470,7 +473,6 @@ def gameloop():
         draw_menu2()
 
     if is_playing:
-        print(frame)
         if frame % time2 == 0:
             x, y = c.coords(game_objects["aim2"])
             if y < 600:
@@ -604,7 +606,11 @@ def gameloop():
         if mxstate == 1:
             c.tag_raise(game_objects["not sound"], game_objects["base1"])
 
-    c.after(10, gameloop)
+    FRAMEEND = time.time()
+
+    FRAMESIZE = int((FRAMEEND - FRAMESTART) * 1000)
+    print(FRAMESIZE)
+    c.after(max(0, 20 - FRAMESIZE), gameloop)
 
 
 c.after(10, gameloop)
