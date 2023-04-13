@@ -907,13 +907,13 @@ class MyControoler(Controller):
     def on_R2_release(self):
         Move_two_bul(None)
     def on_L3_down(self, value):
-        global is_playing
+        global is_playing, time2
         if is_playing:
             x, y = c.coords(game_objects["aim2"])
             if y < 600:
                 c.move(game_objects["aim2"], 0, vy)
                 c.move(game_objects["aim"], 0, vy)
-        tk.after(1000, move_aim_down)
+        tk.after(time2, move_aim_down)
 
 
 controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
