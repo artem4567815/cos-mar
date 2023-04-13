@@ -148,12 +148,12 @@ def Move_star():
         c.coords(star2_2, 0, -1024)
     if y6 >= 1024:
         c.coords(star3_2, 0, -1024)
-    c.move(star1_1, 0, 10)
-    c.move(star2_1, 0, 5)
-    c.move(star3_1, 0, 2)
-    c.move(star1_2, 0, 10)
-    c.move(star2_2, 0, 5)
-    c.move(star3_2, 0, 2)
+    c.move(star1_1, 0, 0.1)
+    c.move(star2_1, 0, 0.2)
+    c.move(star3_1, 0, 0.3)
+    c.move(star1_2, 0, 0.1)
+    c.move(star2_2, 0, 0.2)
+    c.move(star3_2, 0, 0.3)
 
     c.after(50, Move_star)
 
@@ -630,7 +630,7 @@ def Move_bullet():
         for i in bullets:
             s = (i.tx - i.x) ** 2 + (i.y - i.ty) ** 2
             s2 = math.sqrt(s)
-            coef = 400 / (s2 + 0.000000000000000000000000001)
+            coef = 800 / (s2 + 0.000000000000000000000000001)
             dy = -int((i.y - i.ty)) * coef
             c.move(i.image, int((i.tx - i.x) * coef), dy)
             if s2 < 400:
