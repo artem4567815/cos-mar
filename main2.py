@@ -926,15 +926,21 @@ class MyControoler(Controller):
             move_aim_down()
             flag30 = False
     def on_L3_y_at_rest(self):
-        global flag30, flag31
+        global flag30
         flag30 = True
+    def on_L3_x_at_rest(self):
+        global flag31
         flag31 = True
     def on_L3_left(self, value):
-        if value == -15877:
+        global flag31
+        if flag31:
             move_aim_left()
+            flag31 = False
     def on_L3_right(self, value):
-        if value == 15877:
+        global flag31
+        if flag31:
             move_aim_right()
+            flag31 = False
     def on_L3_up(self, value):
         global flag30
         if flag30:
