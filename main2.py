@@ -908,6 +908,7 @@ class MyControoler(Controller):
         Move_two_bul(None)
     def on_L3_down(self, value):
         global is_playing, time2
+        self.value = 32767
         if is_playing:
             x, y = c.coords(game_objects["aim2"])
             if y < 600:
