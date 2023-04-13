@@ -604,10 +604,10 @@ def gameloop():
         if mxstate == 1:
             c.tag_raise(game_objects["not sound"], game_objects["base1"])
 
-    c.after(20, gameloop)
+    c.after(10, gameloop)
 
 
-c.after(20, gameloop)
+c.after(10, gameloop)
 
 
 
