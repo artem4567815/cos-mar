@@ -367,8 +367,33 @@ count3 = 0
 count4 = 0
 count5 = 0
 mxstate = 0
-def Move_star():
-    global arr, music
+
+
+def gameloop():
+    global station, is_playing, time0, frame
+    global arr, music, vy
+    global time5, flag15, flag, life
+    global count, time2, time4, a, t, count2, time5, flag15, count3, count4, count5, flag, is_playing
+    global is_playing, count, station, life, flag, time0, bonus, entry2, mxstate
+    frame += 20
+    should_delete = []
+    neightboor2 = []
+    counter = []
+    time4 += 5
+    cor = []
+    if station == "menu":
+        is_playing = False
+        draw_menu()
+    if station == "menu2":
+        is_playing = False
+        time0 = 0
+    if station == "menu3":
+        is_playing = False
+        draw_menu2()
+    if station == "game":
+        is_playing = True
+        time0 += 20
+
     if len(arr) == 0:
         arr = ["musik/хакатон_1.wav", "3musik/музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
     for event in pygame.event.get():
@@ -397,36 +422,6 @@ def Move_star():
             pygame.mixer.music.play()
             music = "one"
             continue
-
-    c.after(50, Move_star)
-
-
-c.after(50, Move_star)
-
-def gameloop():
-    global station, is_playing, time0, frame
-    global arr, music, vy
-    global time5, flag15, flag, life
-    global count, time2, time4, a, t, count2, time5, flag15, count3, count4, count5, flag, is_playing
-    global is_playing, count, station, life, flag, time0, bonus, entry2, mxstate
-    frame += 20
-    should_delete = []
-    neightboor2 = []
-    counter = []
-    time4 += 5
-    cor = []
-    if station == "menu":
-        is_playing = False
-        draw_menu()
-    if station == "menu2":
-        is_playing = False
-        time0 = 0
-    if station == "menu3":
-        is_playing = False
-        draw_menu2()
-    if station == "game":
-        is_playing = True
-        time0 += 20
 
     if flag == "False":
         is_playing = False
