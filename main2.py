@@ -316,9 +316,9 @@ def draw_images():
     game_objects["cannon_green"] = c.create_image(50, 810, image=images["cannon_create_green"], anchor=NW)
     game_objects["cannon_blue"] = c.create_image(490, 810, image=images["cannon_create_blue"], anchor=NW)
     game_objects["cannon_red"] = c.create_image(1074, 815, image=images["cannon_create_red"], anchor=NW)
-    # game_objects["selected1"] = c.create_image(50, 810, image=images["select_green_cannon"], anchor=NW)
-    # game_objects["selected2"] = c.create_image(490, 810, image=images["select_blue_cannon"], anchor=NW)
-    # game_objects["selected3"] = c.create_image(1074, 815, image=images["select_red_cannon"], anchor=NW)
+    game_objects["selected1"] = c.create_image(50, 810, image=images["select_green_cannon"], anchor=NW)
+    game_objects["selected2"] = c.create_image(490, 810, image=images["select_blue_cannon"], anchor=NW)
+    game_objects["selected3"] = c.create_image(1074, 815, image=images["select_red_cannon"], anchor=NW)
     c.tag_raise(game_objects["cannon_green"])
     c.tag_raise(game_objects["cannon_red"])
     c.tag_raise(game_objects["cannon_blue"])
@@ -735,61 +735,44 @@ def selected_green_cannon(event):
     global state, flag14, flag5, flag6
     if is_playing:
         state = "green"
-        game_objects["selected1"] = c.create_image(50, 810, image=images["select_green_cannon"], anchor=NW)
         c.tag_raise(game_objects["hp4"], game_objects["selected1"])
+        c.tag_raise(game_objects["selected1"], game_objects["cannon_green"])
         if "life4" in black_life:
             c.tag_raise(black_life["life4"], game_objects["selected1"])
-        c.delete(game_objects["cannon_green"])
         flag14 = True
         if flag5:
-            c.delete(game_objects["cannon_blue"])
-            c.delete(game_objects["selected2"])
-            game_objects["cannon_blue"] = c.create_image(490, 810, image=images["cannon_create_blue"], anchor=NW)
+            c.tag_raise(game_objects["cannon_blue"], game_objects["selected2"])
         if flag6:
-            c.delete(game_objects["cannon_red"])
-            c.delete(game_objects["selected3"])
-            game_objects["cannon_red"] = c.create_image(1074, 815, image=images["cannon_create_red"], anchor=NW)
             c.tag_lower(game_objects["cannon_red"], game_objects["sound"])
             c.tag_lower(game_objects["cannon_red"], game_objects["not sound"])
-
+            c.tag_raise(game_objects["cannon_red"], game_objects["selected3"])
 
 def selected_blue_cannon(event):
     global state, flag5, flag14, flag6
     if is_playing:
         state = "blue"
-        game_objects["selected2"] = c.create_image(490, 810, image=images["select_blue_cannon"], anchor=NW)
-        c.delete(game_objects["cannon_blue"])
+        c.tag_raise(game_objects["selected2"], game_objects["cannon_blue"])
         flag5 = True
         if flag14:
-            c.delete(game_objects["selected1"])
-            c.delete(game_objects["cannon_green"])
-            game_objects["cannon_green"] = c.create_image(50, 810, image=images["cannon_create_green"], anchor=NW)
+            c.tag_raise(game_objects["cannon_green"], game_objects["selected1"])
+
         if flag6:
-            c.delete(game_objects["cannon_red"])
-            c.delete(game_objects["selected3"])
-            game_objects["cannon_red"] = c.create_image(1074, 815, image=images["cannon_create_red"], anchor=NW)
             c.tag_lower(game_objects["cannon_red"], game_objects["sound"])
             c.tag_lower(game_objects["cannon_red"], game_objects["not sound"])
-
+            c.tag_raise(game_objects["cannon_red"], game_objects["selected3"])
 
 def selected_red_cannon(event):
     global state, flag5, flag14, flag6
     if is_playing:
         state = "red"
-        game_objects["selected3"] = c.create_image(1074, 815, image=images["select_red_cannon"], anchor=NW)
         c.tag_lower(game_objects["selected3"], game_objects["sound"])
         c.tag_lower(game_objects["selected3"], game_objects["not sound"])
-        c.delete(game_objects["cannon_red"])
+        c.tag_raise(game_objects["selected3"], game_objects["cannon_red"])
         flag6 = True
         if flag14:
-            c.delete(game_objects["selected1"])
-            c.delete(game_objects["cannon_green"])
-            game_objects["cannon_green"] = c.create_image(50, 810, image=images["cannon_create_green"], anchor=NW)
+            c.tag_raise(game_objects["cannon_green"], game_objects["selected1"])
         if flag5:
-            c.delete(game_objects["cannon_blue"])
-            c.delete(game_objects["selected2"])
-            game_objects["cannon_blue"] = c.create_image(490, 810, image=images["cannon_create_blue"], anchor=NW)
-
+            c.tag_raise(game_objects["cannon_blue"], game_objects["selected2"])
 
 tk.bind('<Left>', selected_green_cannon)
 tk.bind('<Up>', selected_blue_cannon)
@@ -911,6 +894,7 @@ class MyControoler(Controller):
         Controller.__init__(self, **kwargs)
     def on_x_press(self):
         selected_blue_cannon(None)
+
     def on_square_press(self):
         selected_green_cannon(None)
     def on_circle_press(self):
@@ -920,6 +904,6 @@ class MyControoler(Controller):
 
 
 controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
-spam_thread = Thread(target=lambda:controller.listen(timeout=60))
+spam_thread = Thread(target=lambda: controller.listen(timeout=60))
 spam_thread.start()
 mainloop()
