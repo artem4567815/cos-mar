@@ -914,7 +914,23 @@ class MyControoler(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
     def on_x_press(self):
-        selected_blue_cannon(None)
+        global state, flag5, flag14, flag6
+        if is_playing:
+            state = "blue"
+            c.delete(game_objects["selected2"])
+            game_objects["selected2"] = c.create_image(490, 810, image=images["select_blue_cannon"], anchor=NW)
+            c.delete(game_objects["cannon_blue"])
+            flag5 = True
+            if flag14:
+                c.delete(game_objects["selected1"])
+                c.delete(game_objects["cannon_green"])
+                game_objects["cannon_green"] = c.create_image(50, 810, image=images["cannon_create_green"], anchor=NW)
+            if flag6:
+                c.delete(game_objects["cannon_red"])
+                c.delete(game_objects["selected3"])
+                game_objects["cannon_red"] = c.create_image(1074, 815, image=images["cannon_create_red"], anchor=NW)
+                c.tag_lower(game_objects["cannon_red"], game_objects["sound"])
+                c.tag_lower(game_objects["cannon_red"], game_objects["not sound"])
 
 
 controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
