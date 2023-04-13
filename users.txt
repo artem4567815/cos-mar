@@ -1,0 +1,219 @@
+[
+ {
+  "name": "THE BEST",
+  "count": 3101904
+ },
+ {
+  "name": "\u0434\u0435\u043d \u0434\u0430\u0443\u043d",
+  "count": 92872.0
+ },
+ {
+  "name": "c strjmgk34iv53pnytmvm45uptvu4sssss",
+  "count": 82826.0
+ },
+ {
+  "name": "yaaaaaaa",
+  "count": 76493
+ },
+ {
+  "num": 1,
+  "name": "\u0422\u041e\u041f\u0410\u041d",
+  "count": 51528
+ },
+ {
+  "num": 1,
+  "name": "\u0444\u0444",
+  "count": 51528
+ },
+ {
+  "num": 1,
+  "name": "a",
+  "count": 51528
+ },
+ {
+  "num": 1,
+  "name": "zzzzz",
+  "count": 39461
+ },
+ {
+  "name": "aaaaaaaaaaaaa",
+  "count": 26379.0
+ },
+ {
+  "num": 1,
+  "name": "ffffffff",
+  "count": 25952
+ },
+ {
+  "name": "aaaaaa",
+  "count": 22891.0
+ },
+ {
+  "name": "a",
+  "count": 11509
+ },
+ {
+  "name": "a",
+  "count": 1502
+ },
+ {
+  "name": "a",
+  "count": 1072
+ },
+ {
+  "name": "AA",
+  "count": 693
+ },
+ {
+  "name": "gggg",
+  "count": 581
+ },
+ {
+  "name": "a",
+  "count": 309
+ },
+ {
+  "name": "a",
+  "count": 308
+ },
+ {
+  "name": "a",
+  "count": 261
+ },
+ {
+  "name": "a",
+  "count": 228
+ },
+ {
+  "name": "THE BEST",
+  "count": 196
+ },
+ {
+  "name": "a",
+  "count": 185
+ },
+ {
+  "name": "vvvvvv",
+  "count": 170
+ },
+ {
+  "name": "a",
+  "count": 0
+ },
+ {
+  "name": "a",
+  "count": 0
+ },
+ {
+  "name": "a",
+  "count": 0
+ },
+ {
+  "name": "\u0444\u0444",
+  "count": 0
+ },
+ {
+  "name": "\u0444\u0444",
+  "count": 0
+ },
+ {
+  "name": "a",
+  "count": 0
+ },
+ {
+  "name": "s",
+  "count": 0
+ },
+ {
+  "name": "d",
+  "count": 0
+ },
+ {
+  "name": "q",
+  "count": 0
+ },
+ {
+  "name": "zzzzz",
+  "count": 0
+ },
+ {
+  "name": "zzzzz",
+  "count": 0
+ },
+ {
+  "name": "\u0422\u041e\u041f\u0410\u041d",
+  "count": 0
+ },
+ {
+  "name": "t",
+  "count": 0
+ },
+ {
+  "name": "]",
+  "count": 0
+ },
+ {
+  "name": "l",
+  "count": 0
+ },
+ {
+  "name": ";",
+  "count": 0
+ },
+ {
+  "name": "\\",
+  "count": 0
+ },
+ {
+  "name": "n",
+  "count": 0
+ },
+ {
+  "name": "/",
+  "count": 0
+ },
+ {
+  "name": "vvv",
+  "count": 0
+ },
+ {
+  "name": "vvvv",
+  "count": 0
+ },
+ {
+  "name": "vvvvvvvv",
+  "count": 0
+ },
+ {
+  "name": "vvvvvvvvvv",
+  "count": 0
+ },
+ {
+  "name": "bbbbbbbbbbbbbb",
+  "count": 0
+ },
+ {
+  "name": "jjjjjjjjjj",
+  "count": 0
+ },
+ {
+  "name": "uuu",
+  "count": 0
+ },
+ {
+  "name": "kkk",
+  "count": 0
+ },
+ {
+  "name": "ll",
+  "count": 0
+ },
+ {
+  "name": "nnn",
+  "count": 0
+ },
+ {
+  "name": "A",
+  "count": 0
+ }
+]
