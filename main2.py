@@ -13,8 +13,7 @@ from operator import itemgetter
 # import sys
 # os.chdir(sys._MEIPASS)
 from pyPS4Controller.controller import Controller
-
-
+from threading import Thread
 
 tk = Tk()
 style = ttk.Style()
@@ -918,6 +917,9 @@ class MyControoler(Controller):
 
 
 controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
-#controller.listen(timeout=60)
 
+controller.listen(timeout=60)
+
+spam_thread = Thread(target=controller.listen(timeout=60))
+spam_thread.start()
 mainloop()
