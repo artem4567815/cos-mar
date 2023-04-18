@@ -45,11 +45,16 @@ class Background(pygame.sprite.Sprite):
         screen.blit(self.cannon_red, (1074, 815))
 
 class Block(pygame.sprite.Sprite):
+
+    RED = pygame.image.load("images/cannon_red_new.png")
+    BLUE = pygame.image.load("images/blue_new.png")
+    GREEN = pygame.image.load("images/green_new.png")
+
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.colors = {"red": pygame.image.load("images/cannon_red_new.png"),
-                      "blue": pygame.image.load("images/blue_new.png"),
-                      "green": pygame.image.load("images/green_new.png")}
+        self.colors = {"red": self.RED,
+                      "blue": self.BLUE,
+                      "green": self.GREEN}
 
         self.rect = Rect(x, y, 136, 136)
         self.color = 0
