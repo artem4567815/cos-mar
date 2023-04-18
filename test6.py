@@ -65,7 +65,7 @@ class Block(pygame.sprite.Sprite):
         screen.blit(self.colors[self.cc], (self.rect.x, self.rect.y))
 
     def update(self):
-        if self.frame % 60 == 0:
+        if self.frame % 15 == 0:
             self.rect.y += self.yvel
         self.frame += 1
 
@@ -237,7 +237,7 @@ while True:
             aim.move_down()
 
 
-    if frame % 60 == 0:
+    if frame % 15 == 0:
         x = 30
         for _ in range(9):
             player = Block(x, -136)
@@ -248,18 +248,15 @@ while True:
             players.add(player)
     frame += 1
 
-    for player in players:
-        player.update()
-        player.draw(screen)
+    players.update()
+    players.draw(screen)
 
     aim.update()
     aim.draw(screen)
 
+    bullets.update()
+    bullets.draw(screen)
 
-    for bullet in bullets:
-        bullet.draw(screen)
-        intersection.current_bullet = bullet.color
-        bullet.update()
 
     # should_delete = []
     # neightboor2 = []
@@ -288,4 +285,4 @@ while True:
     #         neightboor2 = []
 
     pygame.display.update()
-    clock.tick(60)
+    clock.tick(30)
