@@ -252,8 +252,9 @@ while True:
         player.update()
         player.draw(screen)
 
-    aim.draw(screen)
     aim.update()
+    aim.draw(screen)
+
 
     for bullet in bullets:
         bullet.draw(screen)
