@@ -12,7 +12,7 @@ from operator import itemgetter
 # import os
 # import sys
 # os.chdir(sys._MEIPASS)
-from pyPS4Controller.controller import Controller
+
 from threading import Thread
 
 tk = Tk()
@@ -20,7 +20,7 @@ style = ttk.Style()
 style.configure("BW.TLabel", foreground="white", background="black")
 style.map('BW.TLabel', background=[('selected', 'white')], foreground=[('selected', 'black')])
 tk.geometry("1024x768")
-tk.attributes("-fullscreen", True)
+#tk.attributes("-fullscreen", True)
 c = Canvas(tk, width=1024, height=768, bg="white")
 c.grid(row=2, columnspan=20)
 tk["bg"] = "black"
@@ -908,48 +908,105 @@ lab2.grid(row=0, column=1)
 
 flag30 = True
 flag31 = True
+#
+# class MyControoler(Controller):
+#     def __init__(self, **kwargs):
+#         Controller.__init__(self, **kwargs)
+#     def on_x_press(self):
+#         selected_blue_cannon(None)
+#     def on_square_press(self):
+#         selected_green_cannon(None)
+#     def on_circle_press(self):
+#         selected_red_cannon(None)
+#     def on_R2_release(self):
+#         Move_two_bul(None)
+#     def on_L3_down(self, value):
+#         global flag30, flag31
+#         x, y = c.coords(game_objects["aim2"])
+#         if flag30 and y < 600:
+#             move_aim_down()
+#             flag30 = False
+#     def on_L3_y_at_rest(self):
+#         global flag30
+#         flag30 = True
+#     def on_L3_x_at_rest(self):
+#         global flag31
+#         flag31 = True
+#     def on_L3_left(self, value):
+#         global flag31
+#         if flag31:
+#             move_aim_left()
+#             flag31 = False
+#     def on_L3_right(self, value):
+#         global flag31
+#         if flag31:
+#             move_aim_right()
+#             flag31 = False
+#     def on_L3_up(self, value):
+#         global flag30
+#         if flag30:
+#             move_aim_up()
+#             flag30 = False
+#
+#
+# controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
+# spam_thread = Thread(target=lambda: controller.listen(timeout=60))
+# spam_thread.start()
 
-class MyControoler(Controller):
-    def __init__(self, **kwargs):
-        Controller.__init__(self, **kwargs)
-    def on_x_press(self):
-        selected_blue_cannon(None)
-    def on_square_press(self):
-        selected_green_cannon(None)
-    def on_circle_press(self):
-        selected_red_cannon(None)
-    def on_R2_release(self):
-        Move_two_bul(None)
-    def on_L3_down(self, value):
-        global flag30, flag31
-        x, y = c.coords(game_objects["aim2"])
-        if flag30 and y < 600:
-            move_aim_down()
-            flag30 = False
-    def on_L3_y_at_rest(self):
-        global flag30
-        flag30 = True
-    def on_L3_x_at_rest(self):
-        global flag31
-        flag31 = True
-    def on_L3_left(self, value):
-        global flag31
-        if flag31:
-            move_aim_left()
-            flag31 = False
-    def on_L3_right(self, value):
-        global flag31
-        if flag31:
-            move_aim_right()
-            flag31 = False
-    def on_L3_up(self, value):
-        global flag30
-        if flag30:
-            move_aim_up()
-            flag30 = False
+
+darkgrey = (40, 40, 40)
+lightgrey = (150, 150, 150)
+
+class TextPrint:
+    def __init__(self):
+        self.reset()
+        self.font = pygame.font.Font(None, 20)
+
+    def print(self, screen, textString):
+        textBitmap = self.font.render(textString, True, lightgrey)
+        screen.blit(textBitmap, [self.x, self.y])
+        self.y += self.line_height
+
+    def reset(self):
+        self.x = 10
+        self.y = 10
+        self.line_height = 15
+
+    def indent(self):
+        self.x += 10
+
+    def unindent(self):
+        self.x -= 10
 
 
-controller = MyControoler(interface="/dev/input/js0", connecting_using_ds4drv=False)
-spam_thread = Thread(target=lambda: controller.listen(timeout=60))
+
+def joystick_controller():
+    pygame.joystick.init()
+
+    while True:
+        for event in pygame.event.get():
+
+            if event.type == pygame.JOYBUTTONDOWN:
+                print("Joystick button pressed.")
+            if event.type == pygame.JOYBUTTONUP:
+                print("Joystick button released.")
+
+        joystick_count = pygame.joystick.get_count()
+
+        for i in range(joystick_count):
+            joystick = pygame.joystick.Joystick(i)
+            joystick.init()
+
+
+            buttons = joystick.get_numbuttons()
+
+            for i in range(buttons):
+                button = joystick.get_button(i)
+
+                if button == 1:
+                    print("helloWorld")
+
+spam_thread = Thread(target=joystick_controller)
 spam_thread.start()
+
 mainloop()
