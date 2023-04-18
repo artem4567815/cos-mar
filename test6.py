@@ -185,7 +185,7 @@ class Intersection():
 
 pygame.init()
 
-screen = pygame.display.set_mode((1280, 1024))
+screen = pygame.display.set_mode((1024, 768))
 pygame.display.set_caption("GAME")
 
 bg = Background()
