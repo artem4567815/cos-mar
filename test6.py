@@ -58,7 +58,7 @@ class Block(pygame.sprite.Sprite):
 
         self.rect = Rect(x, y, 136, 136)
         self.color = 0
-        self.cc = 0
+        self.cc = "red"
         self.yvel = 136
         self.frame = 0
         self.image = self.colors[self.cc]
