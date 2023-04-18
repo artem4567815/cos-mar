@@ -61,6 +61,8 @@ class Block(pygame.sprite.Sprite):
         self.cc = "red"
         self.yvel = 136
         self.frame = 0
+        self.cc = random.choice(list(self.colors))
+        self.color = self.cc
         self.image = self.colors[self.cc]
 
     def draw(self, screen):
@@ -243,8 +245,6 @@ while True:
         x = 30
         for _ in range(9):
             player = Block(x, -136)
-            player.cc = random.choice(list(player.colors))
-            player.color = player.cc
             x += 136
             intersection.current_block = player.color
             players.add(player)
