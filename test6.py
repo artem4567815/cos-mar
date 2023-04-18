@@ -61,8 +61,10 @@ class Block(pygame.sprite.Sprite):
         self.cc = 0
         self.yvel = 136
         self.frame = 0
+        self.image = self.colors[self.cc]
+
     def draw(self, screen):
-        screen.blit(self.colors[self.cc], (self.rect.x, self.rect.y))
+        screen.blit(self.image, (self.rect.x, self.rect.y))
 
     def update(self):
         if self.frame % 15 == 0:
