@@ -255,31 +255,31 @@ while True:
         intersection.current_bullet = bullet.color
         bullet.update()
 
-    should_delete = []
-    neightboor2 = []
-    for bullet in bullets:
-        if not bullet.is_finished():
-            continue
-        for block in players:
-            if intersection.bullet_intersects_block(bullet, block):
-                if not intersection.same_color(bullet, block):
-                    intersection.delete_bullet(bullet)
-                    break
-                else:
-                    if block not in should_delete:
-                        should_delete.append(block)
-                    intersection.delete_bullet(bullet)
-                    break
-
-    while len(should_delete) != 0:
-        for block in should_delete[:]:
-            for neightboor in players:
-                if intersection.is_neightboor(block, neightboor) and intersection.same_color(block, neightboor):
-                    if neightboor not in should_delete and neightboor not in neightboor2:
-                        neightboor2.append(neightboor)
-            intersection.delete_block(block)
-            should_delete = neightboor2
-            neightboor2 = []
+    # should_delete = []
+    # neightboor2 = []
+    # for bullet in bullets:
+    #     if not bullet.is_finished():
+    #         continue
+    #     for block in players:
+    #         if intersection.bullet_intersects_block(bullet, block):
+    #             if not intersection.same_color(bullet, block):
+    #                 intersection.delete_bullet(bullet)
+    #                 break
+    #             else:
+    #                 if block not in should_delete:
+    #                     should_delete.append(block)
+    #                 intersection.delete_bullet(bullet)
+    #                 break
+    #
+    # while len(should_delete) != 0:
+    #     for block in should_delete[:]:
+    #         for neightboor in players:
+    #             if intersection.is_neightboor(block, neightboor) and intersection.same_color(block, neightboor):
+    #                 if neightboor not in should_delete and neightboor not in neightboor2:
+    #                     neightboor2.append(neightboor)
+    #         intersection.delete_block(block)
+    #         should_delete = neightboor2
+    #         neightboor2 = []
 
     pygame.display.update()
     clock.tick(60)
