@@ -57,6 +57,10 @@
   "count": 1502
  },
  {
+  "name": "Dragonheart",
+  "count": 1268
+ },
+ {
   "name": "a",
   "count": 1072
  },
@@ -214,6 +218,10 @@
  },
  {
   "name": "A",
+  "count": 0
+ },
+ {
+  "name": "EmberKnight",
   "count": 0
  }
 ]
