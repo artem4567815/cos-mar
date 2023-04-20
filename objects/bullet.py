@@ -15,4 +15,4 @@ class Bullet:
         return self.canvas.coords(self.image)[1]
 
     def is_finished(self):
-         return int(self.tx) <= int(self.x) and int(self.tx) + 136 > int(self.x) and int(self.ty) >= int(self.y) and int(self.ty) + 136 >= int(self.y)
+         return int(self.tx) <= int(self.x) and int(self.tx) + 108 > int(self.x) and int(self.ty) >= int(self.y) and int(self.ty) + 102 >= int(self.y)

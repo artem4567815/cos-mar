@@ -492,7 +492,7 @@ def spawn_bullet(color):
             x1, y1 = c.coords(game_objects["aim2"])
             x1 += 68
             y1 += 68
-            if i.x < x1 <= i.x + 136 and i.y <= y1 <= i.y + 136 and i.is_bullet:
+            if i.x < x1 <= i.x + 108 and i.y <= y1 <= i.y + 102 and i.is_bullet:
                 print(x1, y1, i.y)
                 bullet1 = Bullet(c, x1, y1,
                                  c.create_image(*coordinates_for_color[state], image=images[f"bullet_create_{color}"],
@@ -551,7 +551,7 @@ c.after(5, Layer)
 
 
 def bullet_intersects_block(bullet, block):
-    return block.x < bullet.x + 40 < block.x + 136 and block.y < bullet.y + 20 < bullet.y + 136
+    return block.x < bullet.x < block.x + 108 and block.y < bullet.y < bullet.y + 102
 
 
 def should_hit(bullet, block):
@@ -560,7 +560,7 @@ def should_hit(bullet, block):
     current_block_img = block.image
 
     x2, y2 = c.coords(current_block_img)
-    if x2 <= x1 < x2 + 136 and y2 <= y1 < y2 + 136:
+    if x2 <= x1 < x2 + 108 and y2 <= y1 < y2 + 102:
         return True
 
 
@@ -572,9 +572,9 @@ def same_color(bullet, block):
 
 
 def is_neightboor(block, neightboor):
-        if abs(neightboor.x - block.x) == 136 and neightboor.y == block.y:
+        if abs(neightboor.x - block.x) == 108 and neightboor.y == block.y:
             return True
-        if neightboor.x == block.x and abs(neightboor.y - block.y) == 136:
+        if neightboor.x == block.x and abs(neightboor.y - block.y) == 102:
             return True
 
 
@@ -639,6 +639,7 @@ def Player():
     if is_playing:
         for bullet in bullets[:]:
             if not bullet.is_finished():
+                print(435345345)
                 continue
             for block in blocks[:]:
                 if bullet_intersects_block(bullet, block):
