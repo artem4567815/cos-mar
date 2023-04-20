@@ -35,9 +35,9 @@ life = 5
 random_var = StringVar()
 blocks = []
 
-color = {"red": ImageTk.PhotoImage(Image.open("images/cannon_red_new.png")),
-         "blue": ImageTk.PhotoImage(Image.open("images/blue_new.png")),
-         "green": ImageTk.PhotoImage(Image.open("images/green_new.png"))}
+color = {"red": ImageTk.PhotoImage(Image.open("images/cannon_red_new.png").resize((68, 68), Image.ANTIALIAS)),
+         "blue": ImageTk.PhotoImage(Image.open("images/blue_new.png").resize((68, 68), Image.ANTIALIAS)),
+         "green": ImageTk.PhotoImage(Image.open("images/green_new.png").resize((68, 68), Image.ANTIALIAS))}
 
 top_name = ["ShadowBlade", "FrostFury", "Thunderbolt", "Nightshade", "Dragonfire", "Stormbringer", "DarkPhoenix",
             "Steelheart", "IceQueen", "MysticMage", "FlameKnight", "PhantomAssassin", "BloodRaven", "Thunderstorm",
