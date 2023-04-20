@@ -97,23 +97,23 @@ star2_2 = c.create_image(0, -1024, image=star2, anchor=NW)
 
 star3_2 = c.create_image(0, -1024, image=star3, anchor=NW)
 
-planet_red = ImageTk.PhotoImage(Image.open("Background/planet_red.png").resize((104, 104), Image.ANTIALIAS))
+planet_red = ImageTk.PhotoImage(Image.open("Background/planet_red.png").resize((104, 98), Image.ANTIALIAS))
 planet_red1 = c.create_image(50, 80, image=planet_red, anchor=NW)
-planet_green = ImageTk.PhotoImage(Image.open("Background/planet_green.png").resize((56, 56), Image.ANTIALIAS))
+planet_green = ImageTk.PhotoImage(Image.open("Background/planet_green.png").resize((56, 53), Image.ANTIALIAS))
 planet_green1 = c.create_image(680, 100, image=planet_green, anchor=NW)
-planet_purple_light = ImageTk.PhotoImage(Image.open("Background/planet_purple_light.png").resize((139, 139), Image.ANTIALIAS))
+planet_purple_light = ImageTk.PhotoImage(Image.open("Background/planet_purple_light.png").resize((139, 131), Image.ANTIALIAS))
 planet_purple_light1 = c.create_image(1040, 50, image=planet_purple_light, anchor=NW)
-planet_purple_dark = ImageTk.PhotoImage(Image.open("Background/planet_purple_dark.png").resize((184, 184), Image.ANTIALIAS))
+planet_purple_dark = ImageTk.PhotoImage(Image.open("Background/planet_purple_dark.png").resize((184, 173), Image.ANTIALIAS))
 planet_purple_dark1 = c.create_image(400, 200, image=planet_purple_dark, anchor=NW)
-planet_orange = ImageTk.PhotoImage(Image.open("Background/palnet_orange.png").resize((82, 82), Image.ANTIALIAS)),
+planet_orange = ImageTk.PhotoImage(Image.open("Background/palnet_orange.png").resize((82, 77), Image.ANTIALIAS)),
 planet_orange1 = c.create_image(500, 760, image=planet_orange, anchor=NW)
 
 sb = ImageTk.PhotoImage(Image.open("Background/хзхзхзхзхзхзхзхзхзхз.png").resize((1024, 768), Image.ANTIALIAS))
 sb1 = c.create_image(0, 0, image=sb, anchor=NW)
 
-planet_green_dark = ImageTk.PhotoImage(Image.open("Background/planet_green_dark.png").resize((224, 224), Image.ANTIALIAS))
+planet_green_dark = ImageTk.PhotoImage(Image.open("Background/planet_green_dark.png").resize((224, 210), Image.ANTIALIAS))
 planet_green_dark1 = c.create_image(30, 550, image=planet_green_dark, anchor=NW)
-planet_top = ImageTk.PhotoImage(Image.open("Background/planet_top.png").resize((389, 389), Image.ANTIALIAS)),
+planet_top = ImageTk.PhotoImage(Image.open("Background/planet_top.png").resize((389, 365), Image.ANTIALIAS)),
 planet_top1 = c.create_image(740, 520, image=planet_top, anchor=NW)
 vx = 0.04
 vx2 = 0.012
