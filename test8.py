@@ -35,9 +35,9 @@ life = 5
 random_var = StringVar()
 blocks = []
 
-color = {"red": ImageTk.PhotoImage(Image.open("images/cannon_red_new.png").resize((108, 102), Image.ANTIALIAS)),
-         "blue": ImageTk.PhotoImage(Image.open("images/blue_new.png").resize((108, 102), Image.ANTIALIAS)),
-         "green": ImageTk.PhotoImage(Image.open("images/green_new.png").resize((108, 102), Image.ANTIALIAS))}
+color = {"red": ImageTk.PhotoImage(Image.open("images/cannon_red_new.png").resize((108, 102), Image.LANCZOS)),
+         "blue": ImageTk.PhotoImage(Image.open("images/blue_new.png").resize((108, 102), Image.LANCZOS)),
+         "green": ImageTk.PhotoImage(Image.open("images/green_new.png").resize((108, 102), Image.LANCZOS))}
 
 top_name = ["ShadowBlade", "FrostFury", "Thunderbolt", "Nightshade", "Dragonfire", "Stormbringer", "DarkPhoenix",
             "Steelheart", "IceQueen", "MysticMage", "FlameKnight", "PhantomAssassin", "BloodRaven", "Thunderstorm",
@@ -80,14 +80,14 @@ arr.remove(str(rand))
 #-------------------------------------------------------------------------------------------------------------
 
 #------------------------------------------Background-------------------------------------------------------------------
-back_purple_phon = ImageTk.PhotoImage(Image.open("Background/purple.png").resize((1024, 768), Image.ANTIALIAS))
+back_purple_phon = ImageTk.PhotoImage(Image.open("Background/purple.png").resize((1024, 768), Image.LANCZOS))
 back_purple_phon2 = c.create_image(0, 0, image=back_purple_phon, anchor=NW)
 
-star1 = ImageTk.PhotoImage(Image.open("Background/star1.png").resize((1024, 768), Image.ANTIALIAS))
+star1 = ImageTk.PhotoImage(Image.open("Background/star1.png").resize((1024, 768), Image.LANCZOS))
 star1_1 = c.create_image(0, 0, image=star1, anchor=NW)
-star2 = ImageTk.PhotoImage(Image.open("Background/star2.png").resize((1024, 768), Image.ANTIALIAS))
+star2 = ImageTk.PhotoImage(Image.open("Background/star2.png").resize((1024, 768), Image.LANCZOS))
 star2_1 = c.create_image(0, 0, image=star2, anchor=NW)
-star3 = ImageTk.PhotoImage(Image.open("Background/star3.png").resize((1024, 768), Image.ANTIALIAS))
+star3 = ImageTk.PhotoImage(Image.open("Background/star3.png").resize((1024, 768), Image.LANCZOS))
 star3_1 = c.create_image(0, 0, image=star3, anchor=NW)
 
 
@@ -97,23 +97,23 @@ star2_2 = c.create_image(0, -1024, image=star2, anchor=NW)
 
 star3_2 = c.create_image(0, -1024, image=star3, anchor=NW)
 
-planet_red = ImageTk.PhotoImage(Image.open("Background/planet_red.png").resize((104, 98), Image.ANTIALIAS))
+planet_red = ImageTk.PhotoImage(Image.open("Background/planet_red.png").resize((104, 98), Image.LANCZOS))
 planet_red1 = c.create_image(50, 80, image=planet_red, anchor=NW)
-planet_green = ImageTk.PhotoImage(Image.open("Background/planet_green.png").resize((56, 53), Image.ANTIALIAS))
+planet_green = ImageTk.PhotoImage(Image.open("Background/planet_green.png").resize((56, 53), Image.LANCZOS))
 planet_green1 = c.create_image(680, 100, image=planet_green, anchor=NW)
-planet_purple_light = ImageTk.PhotoImage(Image.open("Background/planet_purple_light.png").resize((139, 131), Image.ANTIALIAS))
+planet_purple_light = ImageTk.PhotoImage(Image.open("Background/planet_purple_light.png").resize((139, 131), Image.LANCZOS))
 planet_purple_light1 = c.create_image(1040, 50, image=planet_purple_light, anchor=NW)
-planet_purple_dark = ImageTk.PhotoImage(Image.open("Background/planet_purple_dark.png").resize((184, 173), Image.ANTIALIAS))
+planet_purple_dark = ImageTk.PhotoImage(Image.open("Background/planet_purple_dark.png").resize((184, 173), Image.LANCZOS))
 planet_purple_dark1 = c.create_image(400, 200, image=planet_purple_dark, anchor=NW)
-planet_orange = ImageTk.PhotoImage(Image.open("Background/palnet_orange.png").resize((82, 77), Image.ANTIALIAS)),
+planet_orange = ImageTk.PhotoImage(Image.open("Background/palnet_orange.png").resize((82, 77), Image.LANCZOS)),
 planet_orange1 = c.create_image(500, 760, image=planet_orange, anchor=NW)
 
-sb = ImageTk.PhotoImage(Image.open("Background/хзхзхзхзхзхзхзхзхзхз.png").resize((1024, 768), Image.ANTIALIAS))
+sb = ImageTk.PhotoImage(Image.open("Background/хзхзхзхзхзхзхзхзхзхз.png").resize((1024, 768), Image.LANCZOS))
 sb1 = c.create_image(0, 0, image=sb, anchor=NW)
 
-planet_green_dark = ImageTk.PhotoImage(Image.open("Background/planet_green_dark.png").resize((224, 210), Image.ANTIALIAS))
+planet_green_dark = ImageTk.PhotoImage(Image.open("Background/planet_green_dark.png").resize((224, 210), Image.LANCZOS))
 planet_green_dark1 = c.create_image(30, 550, image=planet_green_dark, anchor=NW)
-planet_top = ImageTk.PhotoImage(Image.open("Background/planet_top.png").resize((389, 365), Image.ANTIALIAS)),
+planet_top = ImageTk.PhotoImage(Image.open("Background/planet_top.png").resize((389, 365), Image.LANCZOS)),
 planet_top1 = c.create_image(740, 520, image=planet_top, anchor=NW)
 vx = 0.04
 vx2 = 0.012
@@ -162,26 +162,26 @@ c.after(50, Move_star)
 #-----------------------------------------------------------------------------------------------------------------------
 
 images = {
-    "base": ImageTk.PhotoImage(Image.open("images/baza.png").resize((102, 102), Image.ANTIALIAS)),
-    "cannon_create_green": ImageTk.PhotoImage(Image.open("images/new_green.png")),
-    "cannon_create_blue": ImageTk.PhotoImage(Image.open("images/new_blue.png")),
-    "cannon_create_red": ImageTk.PhotoImage(Image.open("images/new_red.png")),
-    "bullet_create_green": ImageTk.PhotoImage(Image.open("images/bullet.png")),
-    "bullet_create_blue": ImageTk.PhotoImage(Image.open("images/bullet_blue.png")),
-    "bullet_create_red": ImageTk.PhotoImage(Image.open("images/red_bullet.png")),
-    "aim": ImageTk.PhotoImage(Image.open("images/aim2.png")),
-    "red_aim": ImageTk.PhotoImage(Image.open("images/red_aim.png")),
-    "black_hp": ImageTk.PhotoImage(Image.open("images/black_color.png")),
-    "red_hp": ImageTk.PhotoImage(Image.open("images/red_color.png")),
-    "select_green_cannon": ImageTk.PhotoImage(Image.open("images/yellow_green.png")),
-    "select_blue_cannon": ImageTk.PhotoImage(Image.open("images/yellow_blue.png")),
-    "select_red_cannon": ImageTk.PhotoImage(Image.open("images/yellow_red.png")),
-    "1.5x": ImageTk.PhotoImage(Image.open("images/15x.png")),
-    "2x": ImageTk.PhotoImage(Image.open("images/2x.png")),
-    "3x": ImageTk.PhotoImage(Image.open("images/3x.png")),
-    "sound": ImageTk.PhotoImage(Image.open("images/sound.png")),
-    "not sound": ImageTk.PhotoImage(Image.open("images/not_sound.png")),
-    "info": ImageTk.PhotoImage(Image.open("images/info3.png"))
+    "base": ImageTk.PhotoImage(Image.open("images/baza.png").resize((1024, 51), Image.LANCZOS)),
+    "cannon_create_green": ImageTk.PhotoImage(Image.open("images/new_green.png").resize((108, 120), Image.LANCZOS)),
+    "cannon_create_blue": ImageTk.PhotoImage(Image.open("images/new_blue.png").resize((256, 120), Image.LANCZOS)),
+    "cannon_create_red": ImageTk.PhotoImage(Image.open("images/new_red.png").resize((123, 117), Image.LANCZOS)),
+    "bullet_create_green": ImageTk.PhotoImage(Image.open("images/bullet.png").resize((64, 15), Image.LANCZOS)),
+    "bullet_create_blue": ImageTk.PhotoImage(Image.open("images/bullet_blue.png").resize((42, 66), Image.LANCZOS)),
+    "bullet_create_red": ImageTk.PhotoImage(Image.open("images/red_bullet.png").resize((74, 11), Image.LANCZOS)),
+    "aim": ImageTk.PhotoImage(Image.open("images/aim2.png").resize((108, 102), Image.LANCZOS)),
+    "red_aim": ImageTk.PhotoImage(Image.open("images/red_aim.png").resize((108, 102), Image.LANCZOS)),
+    "black_hp": ImageTk.PhotoImage(Image.open("images/black_color.png").resize((56, 45), Image.LANCZOS)),
+    "red_hp": ImageTk.PhotoImage(Image.open("images/red_color.png").resize((56, 45), Image.LANCZOS)),
+    "select_green_cannon": ImageTk.PhotoImage(Image.open("images/yellow_green.png").resize((108, 120), Image.LANCZOS)),
+    "select_blue_cannon": ImageTk.PhotoImage(Image.open("images/yellow_blue.png").resize((256, 120), Image.LANCZOS)),
+    "select_red_cannon": ImageTk.PhotoImage(Image.open("images/yellow_red.png").resize((123, 117), Image.LANCZOS)),
+    "1.5x": ImageTk.PhotoImage(Image.open("images/15x.png").resize((108, 41), Image.LANCZOS)),
+    "2x": ImageTk.PhotoImage(Image.open("images/2x.png").resize((69, 41), Image.LANCZOS)),
+    "3x": ImageTk.PhotoImage(Image.open("images/3x.png").resize((64, 41), Image.LANCZOS)),
+    "sound": ImageTk.PhotoImage(Image.open("images/sound.png").resize((56, 53), Image.LANCZOS)),
+    "not sound": ImageTk.PhotoImage(Image.open("images/not_sound.png").resize((56, 53), Image.LANCZOS)),
+    "info": ImageTk.PhotoImage(Image.open("images/info3.png").resize((950, 416), Image.LANCZOS)),
 }
 game_objects = {
 
