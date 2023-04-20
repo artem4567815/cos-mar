@@ -978,34 +978,65 @@ class TextPrint:
     def unindent(self):
         self.x -= 10
 
-
-
 def joystick_controller():
+    global f, f1, f2, f3, state
     pygame.joystick.init()
-
+    f = True
+    f1 = True
+    clock = pygame.time.Clock()
+    f2 = True
+    f3 = True
     while True:
-        for event in pygame.event.get():
+        if is_playing:
+            for event in pygame.event.get():
 
-            if event.type == pygame.JOYBUTTONDOWN:
-                print("Joystick button pressed.")
-            if event.type == pygame.JOYBUTTONUP:
-                print("Joystick button released.")
+                if event.type == pygame.JOYBUTTONDOWN:
+                    print("Joystick button pressed.")
+                if event.type == pygame.JOYBUTTONUP:
+                    print("Joystick button released.")
 
-        joystick_count = pygame.joystick.get_count()
-
-        for i in range(joystick_count):
-            joystick = pygame.joystick.Joystick(i)
-            joystick.init()
-
-
-            buttons = joystick.get_numbuttons()
-
-            for i in range(buttons):
-                button = joystick.get_button(i)
-
-                if button == 1:
-                    print("helloWorld")
-
+            joystick_count = pygame.joystick.get_count()
+            for i in range(joystick_count):
+                joystick = pygame.joystick.Joystick(i)
+                joystick.init()
+                if round(joystick.get_axis(0)) == 1:
+                    if f:
+                        move_aim_right()
+                        print(4534534534)
+                        f = False
+                if round(joystick.get_axis(0)) == -1:
+                    if f:
+                        move_aim_left()
+                        f = False
+                if round(joystick.get_axis(1)) == 1:
+                    if f1:
+                        move_aim_down()
+                        f1 = False
+                if round(joystick.get_axis(1)) == -1:
+                    if f1:
+                        move_aim_up()
+                        f1 = False
+                if round(joystick.get_axis(0)) == 0:
+                    f = True
+                if round(joystick.get_axis(1)) == 0:
+                    f1 = True
+                if joystick.get_button(3) == 1:
+                    selected_blue_cannon(None)
+                if joystick.get_button(1) == 1:
+                    selected_green_cannon(None)
+                if joystick.get_button(4) == 1:
+                    selected_red_cannon(None)
+                if joystick.get_button(0) == 1:
+                    if f3:
+                        try:
+                            spawn_bullet(state)
+                            print(234234)
+                            f3 = False
+                        except:
+                            print(1234567890)
+                if joystick.get_button(1) == 0:
+                    f3 = True
+        clock.tick(20)
 spam_thread = Thread(target=joystick_controller)
 spam_thread.start()
 
