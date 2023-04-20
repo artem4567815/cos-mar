@@ -934,7 +934,7 @@ def joystick_controller():
                             print(1234567890)
                 if joystick.get_button(1) == 0:
                     f3 = True
-        clock.tick(20)
+        clock.tick(10)
 spam_thread = Thread(target=joystick_controller)
 spam_thread.start()
 mainloop()
