@@ -21,7 +21,7 @@ style.configure("BW.TLabel", foreground="white", background="black")
 style.map('BW.TLabel', background=[('selected', 'white')], foreground=[('selected', 'black')])
 tk.geometry("1024x768")
 #tk.attributes("-fullscreen", True)
-c = Canvas(tk, width=1024, height=710, bg="white")
+c = Canvas(tk, width=1024, height=768, bg="white")
 c.grid(row=2, columnspan=20)
 tk["bg"] = "black"
 
@@ -35,9 +35,9 @@ life = 5
 random_var = StringVar()
 blocks = []
 
-color = {"red": ImageTk.PhotoImage(Image.open("images/cannon_red_new.png").resize((102, 102), Image.ANTIALIAS)),
-         "blue": ImageTk.PhotoImage(Image.open("images/blue_new.png").resize((102, 102), Image.ANTIALIAS)),
-         "green": ImageTk.PhotoImage(Image.open("images/green_new.png").resize((102, 102), Image.ANTIALIAS))}
+color = {"red": ImageTk.PhotoImage(Image.open("images/cannon_red_new.png").resize((108, 108), Image.ANTIALIAS)),
+         "blue": ImageTk.PhotoImage(Image.open("images/blue_new.png").resize((108, 108), Image.ANTIALIAS)),
+         "green": ImageTk.PhotoImage(Image.open("images/green_new.png").resize((108, 108), Image.ANTIALIAS))}
 
 top_name = ["ShadowBlade", "FrostFury", "Thunderbolt", "Nightshade", "Dragonfire", "Stormbringer", "DarkPhoenix",
             "Steelheart", "IceQueen", "MysticMage", "FlameKnight", "PhantomAssassin", "BloodRaven", "Thunderstorm",
@@ -80,14 +80,14 @@ arr.remove(str(rand))
 #-------------------------------------------------------------------------------------------------------------
 
 #------------------------------------------Background-------------------------------------------------------------------
-back_purple_phon = ImageTk.PhotoImage(Image.open("Background/purple.png"))
+back_purple_phon = ImageTk.PhotoImage(Image.open("Background/purple.png").resize((1024, 768), Image.ANTIALIAS))
 back_purple_phon2 = c.create_image(0, 0, image=back_purple_phon, anchor=NW)
 
-star1 = ImageTk.PhotoImage(Image.open("Background/star1.png"))
+star1 = ImageTk.PhotoImage(Image.open("Background/star1.png").resize((1024, 768), Image.ANTIALIAS))
 star1_1 = c.create_image(0, 0, image=star1, anchor=NW)
-star2 = ImageTk.PhotoImage(Image.open("Background/star2.png"))
+star2 = ImageTk.PhotoImage(Image.open("Background/star2.png").resize((1024, 768), Image.ANTIALIAS))
 star2_1 = c.create_image(0, 0, image=star2, anchor=NW)
-star3 = ImageTk.PhotoImage(Image.open("Background/star3.png"))
+star3 = ImageTk.PhotoImage(Image.open("Background/star3.png").resize((1024, 768), Image.ANTIALIAS))
 star3_1 = c.create_image(0, 0, image=star3, anchor=NW)
 
 
@@ -97,23 +97,23 @@ star2_2 = c.create_image(0, -1024, image=star2, anchor=NW)
 
 star3_2 = c.create_image(0, -1024, image=star3, anchor=NW)
 
-planet_red = ImageTk.PhotoImage(Image.open("Background/planet_red.png"))
+planet_red = ImageTk.PhotoImage(Image.open("Background/planet_red.png").resize((104, 104), Image.ANTIALIAS))
 planet_red1 = c.create_image(50, 80, image=planet_red, anchor=NW)
-planet_green = ImageTk.PhotoImage(Image.open("Background/planet_green.png"))
+planet_green = ImageTk.PhotoImage(Image.open("Background/planet_green.png").resize((56, 56), Image.ANTIALIAS))
 planet_green1 = c.create_image(680, 100, image=planet_green, anchor=NW)
-planet_purple_light = ImageTk.PhotoImage(Image.open("Background/planet_purple_light.png"))
+planet_purple_light = ImageTk.PhotoImage(Image.open("Background/planet_purple_light.png").resize((139, 139), Image.ANTIALIAS))
 planet_purple_light1 = c.create_image(1040, 50, image=planet_purple_light, anchor=NW)
-planet_purple_dark = ImageTk.PhotoImage(Image.open("Background/planet_purple_dark.png"))
+planet_purple_dark = ImageTk.PhotoImage(Image.open("Background/planet_purple_dark.png").resize((184, 184), Image.ANTIALIAS))
 planet_purple_dark1 = c.create_image(400, 200, image=planet_purple_dark, anchor=NW)
-planet_orange = ImageTk.PhotoImage(Image.open("Background/palnet_orange.png"))
+planet_orange = ImageTk.PhotoImage(Image.open("Background/palnet_orange.png").resize((82, 82), Image.ANTIALIAS)),
 planet_orange1 = c.create_image(500, 760, image=planet_orange, anchor=NW)
 
-sb = ImageTk.PhotoImage(Image.open("Background/хзхзхзхзхзхзхзхзхзхз.png"))
+sb = ImageTk.PhotoImage(Image.open("Background/хзхзхзхзхзхзхзхзхзхз.png").resize((1024, 768), Image.ANTIALIAS))
 sb1 = c.create_image(0, 0, image=sb, anchor=NW)
 
-planet_green_dark = ImageTk.PhotoImage(Image.open("Background/planet_green_dark.png"))
+planet_green_dark = ImageTk.PhotoImage(Image.open("Background/planet_green_dark.png").resize((224, 224), Image.ANTIALIAS))
 planet_green_dark1 = c.create_image(30, 550, image=planet_green_dark, anchor=NW)
-planet_top = ImageTk.PhotoImage(Image.open("Background/planet_top.png"))
+planet_top = ImageTk.PhotoImage(Image.open("Background/planet_top.png").resize((389, 389), Image.ANTIALIAS)),
 planet_top1 = c.create_image(740, 520, image=planet_top, anchor=NW)
 vx = 0.04
 vx2 = 0.012
@@ -162,7 +162,7 @@ c.after(50, Move_star)
 #-----------------------------------------------------------------------------------------------------------------------
 
 images = {
-    "base": ImageTk.PhotoImage(Image.open("images/baza.png")),
+    "base": ImageTk.PhotoImage(Image.open("images/baza.png").resize((102, 102), Image.ANTIALIAS)),
     "cannon_create_green": ImageTk.PhotoImage(Image.open("images/new_green.png")),
     "cannon_create_blue": ImageTk.PhotoImage(Image.open("images/new_blue.png")),
     "cannon_create_red": ImageTk.PhotoImage(Image.open("images/new_red.png")),
