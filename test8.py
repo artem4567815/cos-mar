@@ -80,41 +80,41 @@ arr.remove(str(rand))
 #-------------------------------------------------------------------------------------------------------------
 
 #------------------------------------------Background-------------------------------------------------------------------
-back_purple_phon = ImageTk.PhotoImage(Image.open("background_for_avtomate/bg6.png"))
+back_purple_phon = ImageTk.PhotoImage(Image.open("Background/purple.png"))
 back_purple_phon2 = c.create_image(0, 0, image=back_purple_phon, anchor=NW)
-#
-# star1 = ImageTk.PhotoImage(Image.open("Background/star1.png"))
-# star1_1 = c.create_image(0, 0, image=star1, anchor=NW)
-# star2 = ImageTk.PhotoImage(Image.open("Background/star2.png"))
-# star2_1 = c.create_image(0, 0, image=star2, anchor=NW)
-# star3 = ImageTk.PhotoImage(Image.open("Background/star3.png"))
-# star3_1 = c.create_image(0, 0, image=star3, anchor=NW)
-#
-#
-# star1_2 = c.create_image(0, -1024, image=star1, anchor=NW)
-#
-# star2_2 = c.create_image(0, -1024, image=star2, anchor=NW)
-#
-# star3_2 = c.create_image(0, -1024, image=star3, anchor=NW)
-#
-# planet_red = ImageTk.PhotoImage(Image.open("Background/planet_red.png"))
-# planet_red1 = c.create_image(50, 80, image=planet_red, anchor=NW)
-# planet_green = ImageTk.PhotoImage(Image.open("Background/planet_green.png"))
-# planet_green1 = c.create_image(680, 100, image=planet_green, anchor=NW)
-# planet_purple_light = ImageTk.PhotoImage(Image.open("Background/planet_purple_light.png"))
-# planet_purple_light1 = c.create_image(1040, 50, image=planet_purple_light, anchor=NW)
-# planet_purple_dark = ImageTk.PhotoImage(Image.open("Background/planet_purple_dark.png"))
-# planet_purple_dark1 = c.create_image(400, 200, image=planet_purple_dark, anchor=NW)
-# planet_orange = ImageTk.PhotoImage(Image.open("Background/palnet_orange.png"))
-# planet_orange1 = c.create_image(500, 760, image=planet_orange, anchor=NW)
-#
-# sb = ImageTk.PhotoImage(Image.open("Background/хзхзхзхзхзхзхзхзхзхз.png"))
-# sb1 = c.create_image(0, 0, image=sb, anchor=NW)
-#
-# planet_green_dark = ImageTk.PhotoImage(Image.open("Background/planet_green_dark.png"))
-# planet_green_dark1 = c.create_image(30, 550, image=planet_green_dark, anchor=NW)
-# planet_top = ImageTk.PhotoImage(Image.open("Background/planet_top.png"))
-# planet_top1 = c.create_image(740, 520, image=planet_top, anchor=NW)
+
+star1 = ImageTk.PhotoImage(Image.open("Background/star1.png"))
+star1_1 = c.create_image(0, 0, image=star1, anchor=NW)
+star2 = ImageTk.PhotoImage(Image.open("Background/star2.png"))
+star2_1 = c.create_image(0, 0, image=star2, anchor=NW)
+star3 = ImageTk.PhotoImage(Image.open("Background/star3.png"))
+star3_1 = c.create_image(0, 0, image=star3, anchor=NW)
+
+
+star1_2 = c.create_image(0, -1024, image=star1, anchor=NW)
+
+star2_2 = c.create_image(0, -1024, image=star2, anchor=NW)
+
+star3_2 = c.create_image(0, -1024, image=star3, anchor=NW)
+
+planet_red = ImageTk.PhotoImage(Image.open("Background/planet_red.png"))
+planet_red1 = c.create_image(50, 80, image=planet_red, anchor=NW)
+planet_green = ImageTk.PhotoImage(Image.open("Background/planet_green.png"))
+planet_green1 = c.create_image(680, 100, image=planet_green, anchor=NW)
+planet_purple_light = ImageTk.PhotoImage(Image.open("Background/planet_purple_light.png"))
+planet_purple_light1 = c.create_image(1040, 50, image=planet_purple_light, anchor=NW)
+planet_purple_dark = ImageTk.PhotoImage(Image.open("Background/planet_purple_dark.png"))
+planet_purple_dark1 = c.create_image(400, 200, image=planet_purple_dark, anchor=NW)
+planet_orange = ImageTk.PhotoImage(Image.open("Background/palnet_orange.png"))
+planet_orange1 = c.create_image(500, 760, image=planet_orange, anchor=NW)
+
+sb = ImageTk.PhotoImage(Image.open("Background/хзхзхзхзхзхзхзхзхзхз.png"))
+sb1 = c.create_image(0, 0, image=sb, anchor=NW)
+
+planet_green_dark = ImageTk.PhotoImage(Image.open("Background/planet_green_dark.png"))
+planet_green_dark1 = c.create_image(30, 550, image=planet_green_dark, anchor=NW)
+planet_top = ImageTk.PhotoImage(Image.open("Background/planet_top.png"))
+planet_top1 = c.create_image(740, 520, image=planet_top, anchor=NW)
 vx = 0.04
 vx2 = 0.012
 vx3 = 0.1
