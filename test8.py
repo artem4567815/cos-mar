@@ -19,7 +19,7 @@ tk = Tk()
 style = ttk.Style()
 style.configure("BW.TLabel", foreground="white", background="black")
 style.map('BW.TLabel', background=[('selected', 'white')], foreground=[('selected', 'black')])
-tk.geometry("1024x768")
+tk.geometry("1024x820")
 #tk.attributes("-fullscreen", True)
 c = Canvas(tk, width=1024, height=768, bg="white")
 c.grid(row=2, columnspan=20)
@@ -28,7 +28,7 @@ tk["bg"] = "black"
 is_playing = False
 is_deleted = False
 time0 = 0
-vy = 136
+vy = 102
 count = 0
 count2 = 0
 life = 5
@@ -230,7 +230,7 @@ def clear():
 
 def draw_menu():
     if is_playing == False:
-        objects.append(c.create_image(200, 650, image=game_btn, anchor=NW))
+        objects.append(c.create_image(70, 450, image=game_btn, anchor=NW))
         objects.append(c.create_image(50, 0, image=images["info"], anchor=NW))
 
 def menn():
@@ -275,15 +275,15 @@ def draw_menu2():
 def draw_images():
     game_objects["sound"] = c.create_image(954, 650, image=images["sound"], anchor=NW)
     game_objects["not sound"] = c.create_image(954, 650, image=images["not sound"], anchor=NW)
-    game_objects["base1"] = c.create_image(0, 650, image=images["base"], anchor=NW)
-    game_objects["aim2"] = c.create_image(30, -136, image=images["aim"], anchor=NW)
-    game_objects["aim"] = c.create_image(30, -136, image=images["red_aim"], anchor=NW)
-    game_objects["cannon_green"] = c.create_image(50, 510, image=images["cannon_create_green"], anchor=NW)
-    game_objects["cannon_blue"] = c.create_image(490, 510, image=images["cannon_create_blue"], anchor=NW)
-    game_objects["cannon_red"] = c.create_image(1074, 515, image=images["cannon_create_red"], anchor=NW)
-    game_objects["selected1"] = c.create_image(50, 510, image=images["select_green_cannon"], anchor=NW)
-    game_objects["selected2"] = c.create_image(490, 510, image=images["select_blue_cannon"], anchor=NW)
-    game_objects["selected3"] = c.create_image(1074, 515, image=images["select_red_cannon"], anchor=NW)
+    game_objects["base1"] = c.create_image(0, 720, image=images["base"], anchor=NW)
+    game_objects["aim2"] = c.create_image(30, -102, image=images["aim"], anchor=NW)
+    game_objects["aim"] = c.create_image(30, -102, image=images["red_aim"], anchor=NW)
+    game_objects["cannon_green"] = c.create_image(40, 610, image=images["cannon_create_green"], anchor=NW)
+    game_objects["cannon_blue"] = c.create_image(400, 610, image=images["cannon_create_blue"], anchor=NW)
+    game_objects["cannon_red"] = c.create_image(860, 615, image=images["cannon_create_red"], anchor=NW)
+    game_objects["selected1"] = c.create_image(40, 610, image=images["select_green_cannon"], anchor=NW)
+    game_objects["selected2"] = c.create_image(400, 610, image=images["select_blue_cannon"], anchor=NW)
+    game_objects["selected3"] = c.create_image(860, 615, image=images["select_red_cannon"], anchor=NW)
     c.tag_raise(game_objects["cannon_green"])
     c.tag_raise(game_objects["cannon_red"])
     c.tag_raise(game_objects["cannon_blue"])
@@ -420,44 +420,44 @@ def Move_aim(key):
     if is_playing:
         x, y = c.coords(game_objects["aim2"])
         if (key.char == "d" or key.char == "D" or key.char == "в" or key.char == "В") and x < 1118:
-            c.move(game_objects["aim2"], 136, 0)
-            c.move(game_objects["aim"], 136, 0)
+            c.move(game_objects["aim2"], 108, 0)
+            c.move(game_objects["aim"], 108, 0)
         if (key.char == "a" or key.char == "A" or key.char == "ф" or key.char == "Ф") and x > 30:
-            c.move(game_objects["aim2"], -136, 0)
-            c.move(game_objects["aim"], -136, 0)
+            c.move(game_objects["aim2"], -108, 0)
+            c.move(game_objects["aim"], -108, 0)
         if (key.char == "w" or key.char == "W" or key.char == "ц" or key.char == "Ц") and y > 0:
-            c.move(game_objects["aim2"], 0, -136)
-            c.move(game_objects["aim"], 0, -136)
+            c.move(game_objects["aim2"], 0, -102)
+            c.move(game_objects["aim"], 0, -102)
         if (key.char == "s" or key.char == "S" or key.char == "ы" or key.char == "Ы") and y < 600:
-            c.move(game_objects["aim2"], 0, 136)
-            c.move(game_objects["aim"], 0, 136)
+            c.move(game_objects["aim2"], 0, 102)
+            c.move(game_objects["aim"], 0, 102)
 
 def move_aim_down():
     if is_playing:
-        c.move(game_objects["aim2"], 0, 136)
-        c.move(game_objects["aim"], 0, 136)
+        c.move(game_objects["aim2"], 0, 102)
+        c.move(game_objects["aim"], 0, 102)
 
 def move_aim_left():
     if is_playing:
-        c.move(game_objects["aim2"], -136, 0)
-        c.move(game_objects["aim"], -136, 0)
+        c.move(game_objects["aim2"], -108, 0)
+        c.move(game_objects["aim"], -108, 0)
 
 def move_aim_right():
     if is_playing:
-        c.move(game_objects["aim2"], 136, 0)
-        c.move(game_objects["aim"], 136, 0)
+        c.move(game_objects["aim2"], 108, 0)
+        c.move(game_objects["aim"], 108, 0)
 def move_aim_up():
-    c.move(game_objects["aim2"], 0, -136)
-    c.move(game_objects["aim"], 0, -136)
+    c.move(game_objects["aim2"], 0, -102)
+    c.move(game_objects["aim"], 0, -102)
 
 def spawn_squ():
     global time2
     x = 30
     if is_playing:
-        for _ in range(7):
+        for _ in range(9):
             cc = random.choice(list(color))
-            block1 = Block(c, c.create_image(x, -136, image=color[cc], anchor=NW), cc, True)
-            x += 136
+            block1 = Block(c, c.create_image(x, -102, image=color[cc], anchor=NW), cc, True)
+            x += 108
             blocks.append(block1)
     c.after(time2, spawn_squ)
 
