@@ -31,7 +31,7 @@ time0 = 0
 vy = 102
 count = 0
 count2 = 0
-life = 5
+life = 30
 random_var = StringVar()
 blocks = []
 
@@ -55,12 +55,10 @@ top_name = ["ShadowBlade", "FrostFury", "Thunderbolt", "Nightshade", "Dragonfire
             "SpunkySquid", "DizzyDolphin", "SillySnake", "ChirpyChicken", "BouncyButterfly", "FurryFerret", "JollyJellyfish",
             "HappyHedgehog", "FunkyFlamingo", "MagicMonkey", "ZanyZebra", "QuirkyQuesadilla", "HilariousHippopotams"
 ]
-(len(top_name))
 with open("users3.txt", "r") as file:
     dell = json.load(file)
 for delll in dell:
     top_name.remove(delll["name"])
-    (len(top_name))
 
 #----------------------music!!!-----------------------------------------------------------------------------------------
 pygame.init()
@@ -197,6 +195,10 @@ columns = ("№", "name", "count")
 game_btn = ImageTk.PhotoImage(Image.open("Background/KPNF2945.PNG"))
 restart = ImageTk.PhotoImage(Image.open("images/restart.png").resize((630, 107), Image.LANCZOS))
 tab_lid = ImageTk.PhotoImage(Image.open("images/tabl_new.png").resize((732, 239), Image.LANCZOS))
+NEW_GAME = ImageTk.PhotoImage(Image.open("images/new_game.png").resize((594, 316), Image.LANCZOS))
+restart_yel = ImageTk.PhotoImage(Image.open("images/restart_yellow.png").resize((630, 107), Image.LANCZOS))
+tab_lid_yel = ImageTk.PhotoImage(Image.open("images/tab_lid_yellow.png").resize((732, 239), Image.LANCZOS))
+NEW_GAME_yel = ImageTk.PhotoImage(Image.open("images/new_game_yellow.png").resize((594, 316), Image.LANCZOS))
 bullets = []
 
 state = "green"
@@ -213,7 +215,7 @@ flag12 = False
 flag13 = False
 flag14 = False
 flag15 = False
-flag16 = True
+flag16 = False
 
 
 time2 = 8000
@@ -248,11 +250,23 @@ def menn():
         lab2.grid(row=0, column=1)
 
 def draw_menu2():
-    global station, leb, leb2, num, btn4, lab, lab2, leb3
+    global station, leb, leb2, num, btn4, lab, lab2, leb3, one, two, th, notone, nottwo, noth
     if not is_playing:
-        objects.append(c.create_image(195, 35, image=restart, anchor=NW))
-        objects.append(c.create_image(150, 180, image=tab_lid, anchor=NW))
-        objects.append(c.create_rectangle(150, 470, 882, 749, fill="red"))
+        notone = c.create_image(195, 35, image=restart, anchor=NW)
+        nottwo = c.create_image(150, 180, image=tab_lid, anchor=NW)
+        noth = c.create_image(225, 470, image=NEW_GAME, anchor=NW)
+        objects.append(notone)
+        objects.append(nottwo)
+        objects.append(noth)
+        one = c.create_image(195, 35, image=restart_yel, anchor=NW)
+        two = c.create_image(150, 180, image=tab_lid_yel, anchor=NW)
+        th = c.create_image(225, 470, image=NEW_GAME_yel, anchor=NW)
+        objects.append(one)
+        objects.append(two)
+        objects.append(th)
+        c.tag_lower(one)
+        c.tag_lower(two)
+        c.tag_lower(th)
         if flag7:
             station = "menu3"
             lab.destroy()
@@ -318,7 +332,7 @@ def click(event):
 
 
 def click2(event):
-    global station, is_playing, time0, flag, life, tree, flag5, flag6, flag7, flag9, flag10, time4, a, t, tree, leb, entry, btn, num, users, count, count2, tree2, tree3, leb3, flag16, time2, name, btn4
+    global station, is_playing, time0, flag, life, tree, flag5, flag6, flag7, flag9, flag10, time4, a, t, tree, leb, entry, btn, num, users, count, count2, tree2, tree3, leb3, flag16, time2, name, btn4, f4, art
     if 195 < event.x < 825 and 35 < event.y < 142 and is_playing == False and station == "menu2":
         clear()
         if station == "menu2":
@@ -337,18 +351,28 @@ def click2(event):
             station = "menu2"
     if 150 < event.x < 882 and 239 < event.y < 419 and not is_playing and station == "menu2":
         flag7 = True
+        f4 = False
         try:
             with open("users3.txt", "r") as file:
                 users = json.load(file)
         except:
             users = []
 
-        users.append({"name": name, "count": count})
-        users.sort(key=itemgetter('count'), reverse=True)
+        has_user = False
+        for user in users:
+            if user["name"] == name and user["count"] > count:
+                has_user = True
+                print(8)
+                break
+            if user["name"] == name and user["count"] < count:
+                ind = users.index({"name": user["name"], "count": user["count"]})
+                print(user["name"])
+                users.remove(users[ind])
 
-
-        art = users.index({"name": name, "count": count})
-
+        if not has_user:
+            users.append({"name": name, "count": count})
+            users.sort(key=itemgetter('count'), reverse=True)
+            art = users.index({"name": name, "count": count})
 
         with open("users3.txt", "w") as file:
             json.dump(users, file, indent=1)
@@ -360,7 +384,7 @@ def click2(event):
         leb3.grid(row=3, column=1)
         btn4 = Button(tk, text="<", command=menn, width=10, height=3, foreground="white", background="black")
         btn4.grid(row=0, column=0)
-        tree = ttk.Treeview(columns=columns, show="headings", height=45, style="BW.TLabel")
+        tree = ttk.Treeview(columns=columns, show="headings", height=40, style="BW.TLabel")
         scrollbar = ttk.Scrollbar(orient='vertical', command=tree.yview)
         scrollbar.grid(row=4, column=21, sticky=NS)
         tree['yscrollcommand'] = scrollbar.set
@@ -368,11 +392,12 @@ def click2(event):
 
         for person in users:
             num += 1
-            leb3.configure(text="Твои очки: " + str(count) + '\n' + "Твой ник: " + str(name) + '\n' + "Твоё место: " + str(art+1))
+            leb3.configure(text="Твои очки: " + str(count) + '\n' + "! Важно в таблицу сохраняется лучший резульат!" + '\n' + "Твой ник: " + str(name) + '\n' + "Твоё место: " + str(art+1))
             if len(users) >= 101:
                 name_old = users[-1]["name"]
                 top_name.append(name_old)
                 users.remove(users[-1])
+
             else:
                 tree.insert("", END, values=(num, person["name"], person["count"]), tags="tree")
                 tree.tag_configure("tree", font=("Ariel", 13))
@@ -394,7 +419,7 @@ def click2(event):
         draw_menu()
         clear()
 
-# хитбокс дедлайна, замедлить блоки, границы, кнопка играть джостиком
+#  границы, кнопка играть джостиком
 def gameloop():
     global station, is_playing, time0
     if station == "menu":
@@ -508,7 +533,6 @@ def spawn_bullet(color):
                 bullet1 = Bullet(c, x1, y1,
                                  c.create_image(*coordinates_for_color[state], image=images[f"bullet_create_{color}"],
                                                 anchor=NW), color)
-                i.is_bullet = False
                 c.tag_raise(bullet1.image)
                 bullets.append(bullet1)
 
@@ -532,8 +556,8 @@ def Move_bullet():
             if s2 < 3200:
                 c.coords(i.image, i.tx, i.ty)
             for block in blocks:
-                if i.tx == block.x and i.ty == block.y and same_color(i, block) and block.is_bullet:
-                    block.is_bullet = False
+                if should_hit(i, block) and same_color(i, block):
+                    i.is_bullet = False
     c.after(5, Move_bullet)
 
 
@@ -544,7 +568,7 @@ def Layer():
     global time5, flag15, flag, life
     if is_playing:
         for block in blocks[:]:
-            if block.y + 136 > 820:
+            if block.y + 102 > 530:
                 flag = "False"
         c.tag_raise("down")
         c.tag_raise("down2")
@@ -593,27 +617,27 @@ def is_neightboor(block, neightboor):
 def life_funk():
     global life, flag, flag15
     life -= 1
-    if life == 4:
+    if life == 24:
         black_life["life1"] = c.create_image(325, 620, image=images["black_hp"], tag='down2',
                                              anchor=NW)
         c.tag_raise(game_objects["aim"], game_objects["aim2"])
         flag15 = True
-    if life == 3:
+    if life == 18:
         black_life["life2"] = c.create_image(245, 620, image=images["black_hp"], tag='down2',
                                              anchor=NW)
         c.tag_raise(game_objects["aim"], game_objects["aim2"])
         flag15 = True
-    if life == 2:
+    if life == 12:
         black_life["life3"] = c.create_image(165, 620, image=images["black_hp"], tag='down2',
                                              anchor=NW)
         c.tag_raise(game_objects["aim"], game_objects["aim2"])
         flag15 = True
-    if life == 1:
+    if life == 6:
         black_life["life4"] = c.create_image(85, 620, image=images["black_hp"], tag='down2',
                                              anchor=NW)
         c.tag_raise(game_objects["aim"], game_objects["aim2"])
         flag15 = True
-    if life == 0:
+    if life <= 0:
         black_life["life5"] = c.create_image(5, 620, image=images["black_hp"], tag='down2',
                                              anchor=NW)
         flag = "False"
@@ -656,11 +680,11 @@ def Player():
                 if bullet_intersects_block(bullet, block):
                     if not same_color(bullet, block):
                         life_funk()
-                        block.is_bullet = True
                         bullets.remove(bullet)
                         delete_bullet(bullet.image)
                         break
                     else:
+                        #block.is_bullet = True
                         if block not in should_delete:
                             should_delete.append(block)
                             counter.append(block)
@@ -785,7 +809,7 @@ def TK_PRESS(key):
     Move_aim(key)
 
 def you_lose():
-    global is_playing, count, station, life, flag, time0, bonus, entry2
+    global is_playing, count, station, life, flag, time0, bonus, entry2, f4
     if flag == "False":
         is_playing = False
         station = "menu2"
@@ -887,20 +911,58 @@ lab.grid(row=0, column=0)
 lab2 = Label(tk, textvariable=random_var, font=("Comic Sans MS", 25), fg="black")
 lab2.grid(row=0, column=1)
 
+
+def onr(event):
+    global f6, f7, f8, one, nottwo, noth
+    if station == "menu2":
+        c.tag_raise(one)
+        f6 = True
+        if f7:
+            c.tag_raise(nottwo)
+        if f8:
+            c.tag_raise(noth)
+
+def ont(event):
+    global state, f6, f7, f8, two, notone, noth
+    if station == "menu2":
+        c.tag_raise(two)
+        f7 = True
+        if f6:
+            c.tag_raise(notone)
+
+        if f8:
+            c.tag_raise(noth)
+
+def onn(event):
+    global f8, f7, f6, th, notone, nottwo
+    if station == "menu2":
+        c.tag_raise(th)
+        f8 = True
+        if f6:
+            c.tag_raise(notone)
+        if f7:
+            c.tag_raise(nottwo)
+
+
 def joystick_controller():
-    global f, f1, f2, f3, state
+    global f, f1, f2, f3, state, one, two, f6, f7, f8, notone, nottwo, noth
     pygame.joystick.init()
     f = True
     f1 = True
     clock = pygame.time.Clock()
     f2 = True
     f3 = True
+    f6 = True
+    f7 = False
+    f8 = False
+    r = 0
+    s = 1
     while True:
-        if is_playing:
-            joystick_count = pygame.joystick.get_count()
-            for i in range(joystick_count):
-                joystick = pygame.joystick.Joystick(i)
-                joystick.init()
+        joystick_count = pygame.joystick.get_count()
+        for i in range(joystick_count):
+            joystick = pygame.joystick.Joystick(i)
+            joystick.init()
+            if station != "menu":
                 if round(joystick.get_axis(0)) == 1:
                     if f:
                         move_aim_right()
@@ -910,6 +972,7 @@ def joystick_controller():
                         move_aim_left()
                         f = False
                 if round(joystick.get_axis(1)) == 1:
+                    print(s)
                     if f1:
                         move_aim_down()
                         f1 = False
@@ -921,21 +984,50 @@ def joystick_controller():
                     f = True
                 if round(joystick.get_axis(1)) == 0:
                     f1 = True
-                if joystick.get_button(3) == 1:
-                    selected_blue_cannon(None)
-                if joystick.get_button(1) == 1:
-                    selected_green_cannon(None)
-                if joystick.get_button(4) == 1:
-                    selected_red_cannon(None)
-                if joystick.get_button(0) == 1:
-                    if f3:
-                        try:
-                            spawn_bullet(state)
-                            f3 = False
-                        except:
-                            pass
-                if joystick.get_button(1) == 0:
+            if joystick.get_button(3) == 1:
+                selected_blue_cannon(None)
+            if joystick.get_button(1) == 1:
+                selected_green_cannon(None)
+            if joystick.get_button(13) == 1:
+                if s == 1:
+                    c.tag_raise(one)
+                    c.tag_lower(notone)
+                    c.tag_lower(nottwo)
+                    c.tag_lower(noth)
+                if s == 2:
+                    c.tag_raise(two)
+                    c.tag_lower(notone)
+                    c.tag_lower(noth)
+                    c.tag_raise(nottwo)
+                if s == 3:
+                    c.tag_raise(th)
+                    c.tag_lower(notone)
+                    c.tag_lower(nottwo)
+                    c.tag_lower(noth)
+            if joystick.get_button(13) == 0:
+                if s == 1:
+                    s = 2
+                if s == 2:
+                    s = 3
+                if s == 3:
+                    s = 1
+            if joystick.get_button(4) == 1:
+                selected_red_cannon(None)
+            if joystick.get_button(0) == 1:
+                if f3:
+                    try:
+                        spawn_bullet(state)
+                        #print(22323232323232)
+                        f3 = False
+                        r += 1
+                        continue
+                    except:
+                        pass
+            if joystick.get_button(1) == 0:
+                #print(r)
+                if r % 1 ==0:
                     f3 = True
+
         clock.tick(120)
 spam_thread = Thread(target=joystick_controller)
 spam_thread.start()
