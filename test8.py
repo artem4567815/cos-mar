@@ -195,8 +195,8 @@ list_count = []
 columns = ("№", "name", "count")
 
 game_btn = ImageTk.PhotoImage(Image.open("Background/KPNF2945.PNG"))
-restart = ImageTk.PhotoImage(Image.open("images/restart.png"))
-tab_lid = ImageTk.PhotoImage(Image.open("images/tabl_new.png"))
+restart = ImageTk.PhotoImage(Image.open("images/restart.png").resize((787, 143), Image.LANCZOS))
+tab_lid = ImageTk.PhotoImage(Image.open("images/tabl_new.png").resize((861, 319), Image.LANCZOS))
 bullets = []
 
 state = "green"
@@ -229,7 +229,7 @@ def clear():
 
 def draw_menu():
     if is_playing == False:
-        objects.append(c.create_image(70, 420, image=game_btn, anchor=NW))
+        objects.append(c.create_image(40, 420, image=game_btn, anchor=NW))
         objects.append(c.create_image(50, 0, image=images["info"], anchor=NW))
 
 def menn():
@@ -272,8 +272,8 @@ def draw_menu2():
 
 
 def draw_images():
-    game_objects["sound"] = c.create_image(954, 650, image=images["sound"], anchor=NW)
-    game_objects["not sound"] = c.create_image(954, 650, image=images["not sound"], anchor=NW)
+    game_objects["sound"] = c.create_image(954, 620, image=images["sound"], anchor=NW)
+    game_objects["not sound"] = c.create_image(954, 620, image=images["not sound"], anchor=NW)
     game_objects["base1"] = c.create_image(0, 620, image=images["base"], anchor=NW)
     game_objects["aim2"] = c.create_image(30, -102, image=images["aim"], anchor=NW)
     game_objects["aim"] = c.create_image(30, -102, image=images["red_aim"], anchor=NW)
@@ -846,12 +846,12 @@ mxstate = 0
 
 def provoke_sound(event):
     global mxstate
-    if 1210 <= event.x <= 1280 and 954 <= event.y <= 1024 and mxstate == 0:
+    if 954 <= event.x <= 1024 and 620 <= event.y <= 690 and mxstate == 0:
         c.tag_raise(game_objects["sound"], game_objects["not sound"])
         ff(event)
         mxstate = 1
         return
-    if 1210 <= event.x <= 1280 and 954 <= event.y <= 1024 and mxstate == 1:
+    if 954 <= event.x <= 1024 and 620 <= event.y <= 690 and mxstate == 1:
         c.tag_raise(game_objects["not sound"], game_objects["sound"])
         invisible(event)
         mxstate = 0
