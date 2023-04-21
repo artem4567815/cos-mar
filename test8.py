@@ -216,7 +216,7 @@ flag15 = False
 flag16 = True
 
 
-time2 = 6250
+time2 = 7000
 objects = []
 station = "menu"
 time4 = 0
@@ -329,7 +329,7 @@ def click2(event):
             time4 = 0
             a = 15000
             t = 0
-            time2 = 6250
+            time2 = 7000
             flag = "True"
             station = "game"
             draw_images()
@@ -389,12 +389,12 @@ def click2(event):
         time4 = 0
         a = 15000
         t = 0
-        time2 = 6250
+        time2 = 7000
         flag = "True"
         draw_menu()
         clear()
 
-# кноаку звука -10, хитбокс дедлайна, замедлить блоки, границы
+# хитбокс дедлайна, замедлить блоки, границы
 def gameloop():
     global station, is_playing, time0
     if station == "menu":
@@ -508,6 +508,7 @@ def spawn_bullet(color):
                 bullet1 = Bullet(c, x1, y1,
                                  c.create_image(*coordinates_for_color[state], image=images[f"bullet_create_{color}"],
                                                 anchor=NW), color)
+                i.is_bullet = False
                 c.tag_raise(bullet1.image)
                 bullets.append(bullet1)
 
@@ -531,7 +532,7 @@ def Move_bullet():
             if s2 < 1600:
                 c.coords(i.image, i.tx, i.ty)
             for block in blocks:
-                if i.tx == block.x and i.ty == block.y and same_color(i, block):
+                if i.tx == block.x and i.ty == block.y and same_color(i, block) and block.is_bullet:
                     block.is_bullet = False
     c.after(5, Move_bullet)
 
@@ -861,12 +862,12 @@ mxstate = 0
 
 def provoke_sound(event):
     global mxstate
-    if 954 <= event.x <= 1024 and 620 <= event.y <= 690 and mxstate == 0:
+    if 954 <= event.x <= 1024 and 610 <= event.y <= 680 and mxstate == 0:
         c.tag_raise(game_objects["sound"], game_objects["not sound"])
         ff(event)
         mxstate = 1
         return
-    if 954 <= event.x <= 1024 and 620 <= event.y <= 690 and mxstate == 1:
+    if 954 <= event.x <= 1024 and 610 <= event.y <= 680 and mxstate == 1:
         c.tag_raise(game_objects["not sound"], game_objects["sound"])
         invisible(event)
         mxstate = 0
