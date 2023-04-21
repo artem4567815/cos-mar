@@ -229,8 +229,8 @@ def clear():
 
 def draw_menu():
     if is_playing == False:
-        objects.append(c.create_image(40, 420, image=game_btn, anchor=NW))
-        objects.append(c.create_image(50, 0, image=images["info"], anchor=NW))
+        objects.append(c.create_image(55, 420, image=game_btn, anchor=NW))
+        objects.append(c.create_image(40, 0, image=images["info"], anchor=NW))
 
 def menn():
     global station, leb, btn4, tree, flag7, btn, lab, lab2, leb2, leb3
@@ -394,7 +394,7 @@ def click2(event):
         draw_menu()
         clear()
 
-# кнопку играть +15, правила -10, кноаку звука -10, хитбокс дедлайна, замедлить блоки, хит боксЫ
+# кноаку звука -10, хитбокс дедлайна, замедлить блоки, границы
 def gameloop():
     global station, is_playing, time0
     if station == "menu":
