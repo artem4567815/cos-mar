@@ -230,7 +230,7 @@ def clear():
 
 def draw_menu():
     if is_playing == False:
-        objects.append(c.create_image(70, 450, image=game_btn, anchor=NW))
+        objects.append(c.create_image(70, 420, image=game_btn, anchor=NW))
         objects.append(c.create_image(50, 0, image=images["info"], anchor=NW))
 
 def menn():
