@@ -195,8 +195,8 @@ list_count = []
 columns = ("№", "name", "count")
 
 game_btn = ImageTk.PhotoImage(Image.open("Background/KPNF2945.PNG"))
-restart = ImageTk.PhotoImage(Image.open("images/restart.png").resize((787, 143), Image.LANCZOS))
-tab_lid = ImageTk.PhotoImage(Image.open("images/tabl_new.png").resize((861, 319), Image.LANCZOS))
+restart = ImageTk.PhotoImage(Image.open("images/restart.png").resize((394, 72), Image.LANCZOS))
+tab_lid = ImageTk.PhotoImage(Image.open("images/tabl_new.png").resize((431, 160), Image.LANCZOS))
 bullets = []
 
 state = "green"
@@ -250,8 +250,8 @@ def menn():
 def draw_menu2():
     global station, leb, leb2, num, btn4, lab, lab2, leb3
     if not is_playing:
-        objects.append(c.create_image(100, 80, image=restart, anchor=NW))
-        objects.append(c.create_image(80, 419, image=tab_lid, anchor=NW))
+        objects.append(c.create_image(110, 50, image=restart, anchor=NW))
+        objects.append(c.create_image(100, 300, image=tab_lid, anchor=NW))
         if flag7:
             station = "menu3"
             lab.destroy()
