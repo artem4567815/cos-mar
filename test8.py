@@ -232,7 +232,6 @@ def draw_menu():
     if is_playing == False:
         objects.append(c.create_image(70, 420, image=game_btn, anchor=NW))
         objects.append(c.create_image(50, 0, image=images["info"], anchor=NW))
-        print(23424342)
 
 def menn():
     global station, leb, btn4, tree, flag7, btn, lab, lab2, leb2, leb3
@@ -306,7 +305,7 @@ def draw_images():
 
 def click(event):
     global station, is_playing, time0, flag9, time2, name, is_deleted
-    if 200 < event.x < 1102 and 650 < event.y < 837 and is_playing == False and station != "menu2":
+    if 70 < event.x < 972 and 420 < event.y < 657 and is_playing == False and station != "menu2":
         clear()
         name = random.choice(top_name)
         flag9 = True
