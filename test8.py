@@ -393,6 +393,8 @@ def click2(event):
         flag = "True"
         draw_menu()
         clear()
+
+# кнопку играть +15, правила -10, кноаку звука -10, хитбокс дедлайна, замедлить блоки, хит боксЫ
 def gameloop():
     global station, is_playing, time0
     if station == "menu":
