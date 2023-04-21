@@ -902,13 +902,11 @@ def joystick_controller():
                 joystick = pygame.joystick.Joystick(i)
                 joystick.init()
                 if round(joystick.get_axis(0)) == 1:
-                    if f:
-                        move_aim_right()
-                        f = False
+                    move_aim_right()
+                    f = False
                 if round(joystick.get_axis(0)) == -1:
-                    if f:
-                        move_aim_left()
-                        f = False
+                    move_aim_left()
+                    f = False
                 if round(joystick.get_axis(1)) == 1:
                     move_aim_down()
                     f1 = False
