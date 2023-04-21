@@ -308,6 +308,7 @@ def click(event):
     if 70 < event.x < 972 and 420 < event.y < 657 and is_playing == False and station != "menu2":
         clear()
         name = random.choice(top_name)
+        print(name)
         flag9 = True
         if station == "menu":
             station = "game"
@@ -318,7 +319,7 @@ def click(event):
 
 def click2(event):
     global station, is_playing, time0, flag, life, tree, flag5, flag6, flag7, flag9, flag10, time4, a, t, tree, leb, entry, btn, num, users, count, count2, tree2, tree3, leb3, flag16, time2, name, btn4
-    if 150 < event.x < 1134 and 130 < event.y < 320 and is_playing == False and station == "menu2":
+    if 195 < event.x < 825 and 35 < event.y < 142 and is_playing == False and station == "menu2":
         clear()
         if station == "menu2":
             life = 5
@@ -334,7 +335,7 @@ def click2(event):
             draw_images()
         else:
             station = "menu2"
-    if 100 < event.x < 1176 and 469 < event.y < 894 and not is_playing and station == "menu2":
+    if 150 < event.x < 882 and 239 < event.y < 419 and not is_playing and station == "menu2":
         flag7 = True
         try:
             with open("users3.txt", "r") as file:
@@ -379,8 +380,19 @@ def click2(event):
             station = "game"
         else:
             station = "menu3"
-
-
+    if 150 <= event.x <= 882 and 470 <= event.y <= 749:
+        station = "menu"
+        life = 5
+        time0 = 0
+        count = 0
+        count2 = 0
+        time4 = 0
+        a = 15000
+        t = 0
+        time2 = 6250
+        flag = "True"
+        draw_menu()
+        clear()
 def gameloop():
     global station, is_playing, time0
     if station == "menu":

@@ -8,6 +8,10 @@
   "count": 1909
  },
  {
+  "name": "SillySeal",
+  "count": 1773
+ },
+ {
   "name": "ShadowBlade",
   "count": 1607
  },
@@ -26,6 +30,10 @@
  {
   "name": "PhoenixAshes",
   "count": 517
+ },
+ {
+  "name": "Thunderbolt",
+  "count": 474
  },
  {
   "name": "FunkyFlamingo",
@@ -52,6 +60,10 @@
   "count": 247
  },
  {
+  "name": "SillySeal",
+  "count": 228
+ },
+ {
   "name": "EmberKnight",
   "count": 105
  },
@@ -69,6 +81,18 @@
  },
  {
   "name": "BouncyBunny",
+  "count": 0
+ },
+ {
+  "name": "CrimsonBlade",
+  "count": 0
+ },
+ {
+  "name": "MysticMage",
+  "count": 0
+ },
+ {
+  "name": "Thunderbolt",
   "count": 0
  }
 ]
