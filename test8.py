@@ -252,6 +252,7 @@ def draw_menu2():
     if not is_playing:
         objects.append(c.create_image(195, 35, image=restart, anchor=NW))
         objects.append(c.create_image(150, 180, image=tab_lid, anchor=NW))
+        objects.append(c.create_rectangle(150, 470, 882, 749, fill="red"))
         if flag7:
             station = "menu3"
             lab.destroy()
