@@ -232,6 +232,7 @@ def draw_menu():
     if is_playing == False:
         objects.append(c.create_image(70, 420, image=game_btn, anchor=NW))
         objects.append(c.create_image(50, 0, image=images["info"], anchor=NW))
+        print(23424342)
 
 def menn():
     global station, leb, btn4, tree, flag7, btn, lab, lab2, leb2, leb3
