@@ -910,13 +910,11 @@ def joystick_controller():
                         move_aim_left()
                         f = False
                 if round(joystick.get_axis(1)) == 1:
-                    if f1:
-                        move_aim_down()
-                        f1 = False
+                    move_aim_down()
+                    f1 = False
                 if round(joystick.get_axis(1)) == -1:
-                    if f1:
-                        move_aim_up()
-                        f1 = False
+                    move_aim_up()
+                    f1 = False
                 if round(joystick.get_axis(0)) == 0:
                     f = True
                 if round(joystick.get_axis(1)) == 0:
