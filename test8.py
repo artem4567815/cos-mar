@@ -195,8 +195,8 @@ list_count = []
 columns = ("№", "name", "count")
 
 game_btn = ImageTk.PhotoImage(Image.open("Background/KPNF2945.PNG"))
-restart = ImageTk.PhotoImage(Image.open("images/restart.png").resize((394, 72), Image.LANCZOS))
-tab_lid = ImageTk.PhotoImage(Image.open("images/tabl_new.png").resize((431, 160), Image.LANCZOS))
+restart = ImageTk.PhotoImage(Image.open("images/restart.png").resize((630, 107), Image.LANCZOS))
+tab_lid = ImageTk.PhotoImage(Image.open("images/tabl_new.png").resize((732, 239), Image.LANCZOS))
 bullets = []
 
 state = "green"
