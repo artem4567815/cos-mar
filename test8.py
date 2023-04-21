@@ -273,8 +273,8 @@ def draw_menu2():
 
 
 def draw_images():
-    game_objects["sound"] = c.create_image(954, 620, image=images["sound"], anchor=NW)
-    game_objects["not sound"] = c.create_image(954, 620, image=images["not sound"], anchor=NW)
+    game_objects["sound"] = c.create_image(954, 610, image=images["sound"], anchor=NW)
+    game_objects["not sound"] = c.create_image(954, 610, image=images["not sound"], anchor=NW)
     game_objects["base1"] = c.create_image(0, 620, image=images["base"], anchor=NW)
     game_objects["aim2"] = c.create_image(30, -102, image=images["aim"], anchor=NW)
     game_objects["aim"] = c.create_image(30, -102, image=images["red_aim"], anchor=NW)
