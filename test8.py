@@ -55,13 +55,12 @@ top_name = ["ShadowBlade", "FrostFury", "Thunderbolt", "Nightshade", "Dragonfire
             "SpunkySquid", "DizzyDolphin", "SillySnake", "ChirpyChicken", "BouncyButterfly", "FurryFerret", "JollyJellyfish",
             "HappyHedgehog", "FunkyFlamingo", "MagicMonkey", "ZanyZebra", "QuirkyQuesadilla", "HilariousHippopotams"
 ]
-print(len(top_name))
+(len(top_name))
 with open("users3.txt", "r") as file:
     dell = json.load(file)
-    print(dell)
 for delll in dell:
     top_name.remove(delll["name"])
-    print(len(top_name))
+    (len(top_name))
 
 #----------------------music!!!-----------------------------------------------------------------------------------------
 pygame.init()
@@ -290,11 +289,11 @@ def draw_images():
     c.tag_raise(game_objects["aim2"])
     c.tag_raise(game_objects["base1"])
     c.tag_raise(game_objects["sound"], game_objects["base1"])
-    game_objects["hp5"] = c.create_image(5, 650, image=images["red_hp"], tag='down', anchor=NW)
-    game_objects["hp4"] = c.create_image(85, 650, image=images["red_hp"], tag='down', anchor=NW)
-    game_objects["hp3"] = c.create_image(165, 650, image=images["red_hp"], tag='down', anchor=NW)
-    game_objects["hp2"] = c.create_image(245, 650, image=images["red_hp"], tag='down', anchor=NW)
-    game_objects["hp"] = c.create_image(325, 650, image=images["red_hp"], tag='down', anchor=NW)
+    game_objects["hp5"] = c.create_image(5, 620, image=images["red_hp"], tag='down', anchor=NW)
+    game_objects["hp4"] = c.create_image(85, 620, image=images["red_hp"], tag='down', anchor=NW)
+    game_objects["hp3"] = c.create_image(165, 620, image=images["red_hp"], tag='down', anchor=NW)
+    game_objects["hp2"] = c.create_image(245, 620, image=images["red_hp"], tag='down', anchor=NW)
+    game_objects["hp"] = c.create_image(325, 620, image=images["red_hp"], tag='down', anchor=NW)
     c.tag_raise(game_objects["hp"])
     c.tag_raise(game_objects["hp2"])
     c.tag_raise(game_objects["hp3"])
@@ -347,7 +346,6 @@ def click2(event):
 
 
         art = users.index({"name": name, "count": count})
-        print(users[art])
 
 
         with open("users3.txt", "w") as file:
@@ -405,7 +403,6 @@ c.after(20, gameloop)
 def Move_aim_down():
     global time2
     if is_playing:
-        print(time2)
         x, y = c.coords(game_objects["aim2"])
         if y < 600:
             c.move(game_objects["aim2"], 0, vy)
@@ -493,7 +490,6 @@ def spawn_bullet(color):
             x1 += 68
             y1 += 68
             if i.x < x1 <= i.x + 108 and i.y <= y1 <= i.y + 102 and i.is_bullet:
-                print(x1, y1, i.y)
                 bullet1 = Bullet(c, x1, y1,
                                  c.create_image(*coordinates_for_color[state], image=images[f"bullet_create_{color}"],
                                                 anchor=NW), color)
@@ -582,27 +578,27 @@ def life_funk():
     global life, flag, flag15
     life -= 1
     if life == 4:
-        black_life["life1"] = c.create_image(325, 960, image=images["black_hp"], tag='down2',
+        black_life["life1"] = c.create_image(325, 620, image=images["black_hp"], tag='down2',
                                              anchor=NW)
         c.tag_raise(game_objects["aim"], game_objects["aim2"])
         flag15 = True
     if life == 3:
-        black_life["life2"] = c.create_image(245, 960, image=images["black_hp"], tag='down2',
+        black_life["life2"] = c.create_image(245, 620, image=images["black_hp"], tag='down2',
                                              anchor=NW)
         c.tag_raise(game_objects["aim"], game_objects["aim2"])
         flag15 = True
     if life == 2:
-        black_life["life3"] = c.create_image(165, 960, image=images["black_hp"], tag='down2',
+        black_life["life3"] = c.create_image(165, 620, image=images["black_hp"], tag='down2',
                                              anchor=NW)
         c.tag_raise(game_objects["aim"], game_objects["aim2"])
         flag15 = True
     if life == 1:
-        black_life["life4"] = c.create_image(85, 960, image=images["black_hp"], tag='down2',
+        black_life["life4"] = c.create_image(85, 620, image=images["black_hp"], tag='down2',
                                              anchor=NW)
         c.tag_raise(game_objects["aim"], game_objects["aim2"])
         flag15 = True
     if life == 0:
-        black_life["life5"] = c.create_image(5, 960, image=images["black_hp"], tag='down2',
+        black_life["life5"] = c.create_image(5, 620, image=images["black_hp"], tag='down2',
                                              anchor=NW)
         flag = "False"
 
@@ -639,7 +635,6 @@ def Player():
     if is_playing:
         for bullet in bullets[:]:
             if not bullet.is_finished():
-                print(435345345)
                 continue
             for block in blocks[:]:
                 if bullet_intersects_block(bullet, block):
@@ -886,13 +881,6 @@ def joystick_controller():
     f3 = True
     while True:
         if is_playing:
-            for event in pygame.event.get():
-
-                if event.type == pygame.JOYBUTTONDOWN:
-                    print("Joystick button pressed.")
-                if event.type == pygame.JOYBUTTONUP:
-                    print("Joystick button released.")
-
             joystick_count = pygame.joystick.get_count()
             for i in range(joystick_count):
                 joystick = pygame.joystick.Joystick(i)
@@ -900,7 +888,6 @@ def joystick_controller():
                 if round(joystick.get_axis(0)) == 1:
                     if f:
                         move_aim_right()
-                        print(4534534534)
                         f = False
                 if round(joystick.get_axis(0)) == -1:
                     if f:
@@ -928,10 +915,9 @@ def joystick_controller():
                     if f3:
                         try:
                             spawn_bullet(state)
-                            print(234234)
                             f3 = False
                         except:
-                            print(1234567890)
+                            pass
                 if joystick.get_button(1) == 0:
                     f3 = True
         clock.tick(10)
