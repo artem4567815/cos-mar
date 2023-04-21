@@ -902,17 +902,21 @@ def joystick_controller():
                 joystick = pygame.joystick.Joystick(i)
                 joystick.init()
                 if round(joystick.get_axis(0)) == 1:
-                    move_aim_right()
-                    f = False
+                    if f:
+                        move_aim_right()
+                        f = False
                 if round(joystick.get_axis(0)) == -1:
-                    move_aim_left()
-                    f = False
+                    if f:
+                        move_aim_left()
+                        f = False
                 if round(joystick.get_axis(1)) == 1:
-                    move_aim_down()
-                    f1 = False
+                    if f1:
+                        move_aim_down()
+                        f1 = False
                 if round(joystick.get_axis(1)) == -1:
-                    move_aim_up()
-                    f1 = False
+                    if f1:
+                        move_aim_up()
+                        f1 = False
                 if round(joystick.get_axis(0)) == 0:
                     f = True
                 if round(joystick.get_axis(1)) == 0:
@@ -932,7 +936,7 @@ def joystick_controller():
                             pass
                 if joystick.get_button(1) == 0:
                     f3 = True
-        clock.tick(10)
+        clock.tick(1)
 spam_thread = Thread(target=joystick_controller)
 spam_thread.start()
 mainloop()
