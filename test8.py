@@ -216,7 +216,7 @@ flag15 = False
 flag16 = True
 
 
-time2 = 10000
+time2 = 8000
 objects = []
 station = "menu"
 time4 = 0
@@ -329,7 +329,7 @@ def click2(event):
             time4 = 0
             a = 15000
             t = 0
-            time2 = 10000
+            time2 = 8000
             flag = "True"
             station = "game"
             draw_images()
@@ -389,7 +389,7 @@ def click2(event):
         time4 = 0
         a = 15000
         t = 0
-        time2 = 10000
+        time2 = 8000
         flag = "True"
         draw_menu()
         clear()
