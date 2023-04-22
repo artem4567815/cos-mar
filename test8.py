@@ -178,7 +178,7 @@ images = {
     "3x": ImageTk.PhotoImage(Image.open("images/3x.png").resize((64, 41), Image.LANCZOS)),
     "sound": ImageTk.PhotoImage(Image.open("images/sound.png").resize((56, 53), Image.LANCZOS)),
     "not sound": ImageTk.PhotoImage(Image.open("images/not_sound.png").resize((56, 53), Image.LANCZOS)),
-    "info": ImageTk.PhotoImage(Image.open("images/info4.png").resize((950, 416), Image.LANCZOS)),
+    "info": ImageTk.PhotoImage(Image.open("images/info5.png").resize((950, 416), Image.LANCZOS)),
 }
 game_objects = {
 
