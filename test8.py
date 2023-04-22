@@ -992,30 +992,6 @@ def joystick_controller():
                     if f1:
                         move_aim_down()
                         f1 = False
-                if round(joystick.get_button(0)) == 1 and station == "munu2":
-                    if s % 3 == 1 and f9:
-                        onr(None)
-                        f8 = False
-                        f7 = False
-                        f9 = False
-                        break
-                    if s % 3 == 2 and f9:
-                        ont(None)
-                        f6 = False
-                        f8 = False
-                        f9 = False
-                        break
-                    if s % 3 == 0 and f9:
-                        onn(None)
-                        f7 = False
-                        f6 = False
-                        f9 = False
-                        print(989999999)
-                        print(round(0.006))
-                        break
-                if round(joystick.get_axis(1)) == 0:
-                    f9 = True
-                    print(joystick.get_axis(1))
 
 
                 if round(joystick.get_axis(1)) == -1:
