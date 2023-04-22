@@ -250,23 +250,26 @@ def menn():
         lab2.grid(row=0, column=1)
 
 def draw_menu2():
-    global station, leb, leb2, num, btn4, lab, lab2, leb3, one, two, th, notone, nottwo, noth
+    global station, leb, leb2, num, btn4, lab, lab2, leb3, one, two, th, notone, nottwo, noth, f6, f7, f8
     if not is_playing:
+        one = c.create_image(195, 35, image=restart_yel, anchor=NW)
+        two = c.create_image(150, 180, image=tab_lid_yel, anchor=NW)
+        th = c.create_image(225, 470, image=NEW_GAME_yel, anchor=NW)
         notone = c.create_image(195, 35, image=restart, anchor=NW)
         nottwo = c.create_image(150, 180, image=tab_lid, anchor=NW)
         noth = c.create_image(225, 470, image=NEW_GAME, anchor=NW)
         objects.append(notone)
         objects.append(nottwo)
         objects.append(noth)
-        one = c.create_image(195, 35, image=restart_yel, anchor=NW)
-        two = c.create_image(150, 180, image=tab_lid_yel, anchor=NW)
-        th = c.create_image(225, 470, image=NEW_GAME_yel, anchor=NW)
         objects.append(one)
         objects.append(two)
         objects.append(th)
-        c.tag_lower(one)
-        c.tag_lower(two)
-        c.tag_lower(th)
+        if f6:
+            c.tag_lower(notone)
+        if f7:
+            c.tag_lower(nottwo)
+        if f8:
+            c.tag_lower(noth)
         if flag7:
             station = "menu3"
             lab.destroy()
@@ -913,39 +916,46 @@ lab2.grid(row=0, column=1)
 
 
 def onr(event):
-    global f6, f7, f8, one, nottwo, noth
+    global f6, f7, f8, one, nottwo, noth, notone, s
     if station == "menu2":
         c.tag_raise(one)
+        c.tag_lower(notone, notone)
+        s += 1
         f6 = True
-        if f7:
-            c.tag_raise(nottwo)
-        if f8:
-            c.tag_raise(noth)
+        return
+        # if f7:
+        #     c.tag_raise(nottwo)
+        # if f8:
+        #     c.tag_raise(noth)
 
 def ont(event):
-    global state, f6, f7, f8, two, notone, noth
+    global state, f6, f7, f8, two, notone, noth, nottwo, s
     if station == "menu2":
-        c.tag_raise(two)
+        c.tag_raise(two, nottwo)
         f7 = True
-        if f6:
-            c.tag_raise(notone)
-
-        if f8:
-            c.tag_raise(noth)
+        s += 1
+        return
+        # if f6:
+        #     c.tag_raise(notone)
+        #
+        # if f8:
+        #     c.tag_raise(noth)
 
 def onn(event):
-    global f8, f7, f6, th, notone, nottwo
+    global f8, f7, f6, th, notone, nottwo, noth, s
     if station == "menu2":
-        c.tag_raise(th)
+        c.tag_raise(th, noth)
         f8 = True
-        if f6:
-            c.tag_raise(notone)
-        if f7:
-            c.tag_raise(nottwo)
+        s += 1
+        return
+        # if f6:
+        #     c.tag_raise(notone)
+        # if f7:
+        #     c.tag_raise(nottwo)
 
 
 def joystick_controller():
-    global f, f1, f2, f3, state, one, two, f6, f7, f8, notone, nottwo, noth
+    global f, f1, f2, f3, state, one, two, f6, f7, f8, notone, nottwo, noth, s, f9
     pygame.joystick.init()
     f = True
     f1 = True
@@ -955,6 +965,7 @@ def joystick_controller():
     f6 = True
     f7 = False
     f8 = False
+    f9 = True
     r = 0
     s = 1
     while True:
@@ -971,46 +982,46 @@ def joystick_controller():
                     if f:
                         move_aim_left()
                         f = False
-                if round(joystick.get_axis(1)) == 1:
+                if joystick.get_axis(1) > 0:
                     print(s)
                     if f1:
                         move_aim_down()
                         f1 = False
+                    if s % 3 == 1 and f9:
+                        onr(None)
+                        f8 = False
+                        f7 = False
+                        f9 = False
+                        break
+                    if s % 3 == 2 and f9:
+                        ont(None)
+                        f6 = False
+                        f8 = False
+                        f9 = False
+                        break
+                    if s % 3 == 0 and f9:
+                        onn(None)
+                        f7 = False
+                        f6 = False
+                        f9 = False
+                        print(989999999)
+                        break
+                if round(joystick.get_axis(1)) == 0:
+                    f9 = True
+                    print(joystick.get_axis(1))
+
                 if round(joystick.get_axis(1)) == -1:
                     if f1:
                         move_aim_up()
                         f1 = False
                 if round(joystick.get_axis(0)) == 0:
                     f = True
-                if round(joystick.get_axis(1)) == 0:
+                if joystick.get_axis(1) == 0:
                     f1 = True
             if joystick.get_button(3) == 1:
                 selected_blue_cannon(None)
             if joystick.get_button(1) == 1:
                 selected_green_cannon(None)
-            if joystick.get_button(13) == 1:
-                if s == 1:
-                    c.tag_raise(one)
-                    c.tag_lower(notone)
-                    c.tag_lower(nottwo)
-                    c.tag_lower(noth)
-                if s == 2:
-                    c.tag_raise(two)
-                    c.tag_lower(notone)
-                    c.tag_lower(noth)
-                    c.tag_raise(nottwo)
-                if s == 3:
-                    c.tag_raise(th)
-                    c.tag_lower(notone)
-                    c.tag_lower(nottwo)
-                    c.tag_lower(noth)
-            if joystick.get_button(13) == 0:
-                if s == 1:
-                    s = 2
-                if s == 2:
-                    s = 3
-                if s == 3:
-                    s = 1
             if joystick.get_button(4) == 1:
                 selected_red_cannon(None)
             if joystick.get_button(0) == 1:
