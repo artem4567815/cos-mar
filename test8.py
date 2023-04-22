@@ -955,7 +955,7 @@ def onn(event):
 
 
 def joystick_controller():
-    global f, f1, f2, f3, state, one, two, f6, f7, f8, notone, nottwo, noth, s, f9
+    global f, f1, f2, f3, state, one, two, f6, f7, f8, notone, nottwo, noth, s, f9, flag9, station
     pygame.joystick.init()
     f = True
     f1 = True
@@ -979,15 +979,15 @@ def joystick_controller():
             joystick = pygame.joystick.Joystick(i)
             joystick.init()
             if station != "menu":
-                if joystick.get_axis(0) > 0:
+                if round(joystick.get_axis(0)) == 1:
                     if f:
                         move_aim_right()
                         f = False
-                if joystick.get_axis(0) < 0:
+                if round(joystick.get_axis(0)) == -1:
                     if f:
                         move_aim_left()
                         f = False
-                if joystick.get_axis(1) > 0:
+                if round(joystick.get_axis(1)) == 1:
                     print(s)
                     if f1:
                         move_aim_down()
@@ -1017,7 +1017,7 @@ def joystick_controller():
                     print(joystick.get_axis(1))
 
 
-                if joystick.get_axis(1) < 0:
+                if round(joystick.get_axis(1)) == -1:
                     if f1:
                         move_aim_up()
                         f1 = False
@@ -1025,15 +1025,23 @@ def joystick_controller():
                     f = True
                 if round(joystick.get_axis(1)) == 0:
                     f1 = True
-            if round(joystick.get_button(0)) == 1:
+            if round(joystick.get_button(3)) == 1:
                 selected_blue_cannon(None)
-            if round(joystick.get_button(2)) == 1:
-                selected_green_cannon(None)
             if round(joystick.get_button(1)) == 1:
+                selected_green_cannon(None)
+            if round(joystick.get_button(4)) == 1:
                 selected_red_cannon(None)
             if round(joystick.get_button(2)) == 1 and station == "menu":
-                click(None)
-            if joystick.get_axis(5) > 0:
+                clear()
+                name = random.choice(top_name)
+                print(name)
+                flag9 = True
+                if station == "menu":
+                    station = "game"
+                    draw_images()
+                else:
+                    station = "menu"
+            if joystick.get_button(0) > 0:
                 if f3:
                     try:
                         spawn_bullet(state)
