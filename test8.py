@@ -974,15 +974,15 @@ def joystick_controller():
             joystick = pygame.joystick.Joystick(i)
             joystick.init()
             if station != "menu":
-                if round(joystick.get_axis(0)) == 1:
+                if round(joystick.get_axis(0)) > 0:
                     if f:
                         move_aim_right()
                         f = False
-                if round(joystick.get_axis(0)) == -1:
+                if round(joystick.get_axis(0)) < 0:
                     if f:
                         move_aim_left()
                         f = False
-                if joystick.get_axis(1) > 0:
+                if round(joystick.get_axis(1)) == 1:
                     print(s)
                     if f1:
                         move_aim_down()
@@ -1005,10 +1005,12 @@ def joystick_controller():
                         f6 = False
                         f9 = False
                         print(989999999)
+                        print(round(0.006))
                         break
                 if round(joystick.get_axis(1)) == 0:
                     f9 = True
                     print(joystick.get_axis(1))
+
 
                 if round(joystick.get_axis(1)) == -1:
                     if f1:
@@ -1016,26 +1018,24 @@ def joystick_controller():
                         f1 = False
                 if round(joystick.get_axis(0)) == 0:
                     f = True
-                if joystick.get_axis(1) == 0:
+                if round(joystick.get_axis(1)) == 0:
                     f1 = True
-            if joystick.get_button(3) == 1:
+            if round(joystick.get_button(3)) == 1:
                 selected_blue_cannon(None)
-            if joystick.get_button(1) == 1:
+            if round(joystick.get_button(1)) == 1:
                 selected_green_cannon(None)
-            if joystick.get_button(4) == 1:
+            if round(joystick.get_button(4)) == 1:
                 selected_red_cannon(None)
-            if joystick.get_button(0) == 1:
+            if round(joystick.get_button(0)) == 1:
                 if f3:
                     try:
                         spawn_bullet(state)
-                        #print(22323232323232)
                         f3 = False
                         r += 1
                         continue
                     except:
                         pass
-            if joystick.get_button(1) == 0:
-                #print(r)
+            if round(joystick.get_button(1)) == 0:
                 if r % 1 ==0:
                     f3 = True
 
