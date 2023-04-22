@@ -64,15 +64,15 @@ for delll in dell:
 pygame.init()
 pygame.mixer.init()
 
-# STOPPED_PLAYING = pygame.USEREVENT + 1
-# pygame.mixer.music.set_endevent(STOPPED_PLAYING)
-# music = "one"
-# arr = ["musik/хакатон_1.wav", "musik/3музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
-# rand = random.choice(arr)
-# pygame.mixer.music.load(rand)
-# pygame.mixer.music.play()
-# pygame.mixer.music.set_volume(0.1)
-# arr.remove(str(rand))
+STOPPED_PLAYING = pygame.USEREVENT + 1
+pygame.mixer.music.set_endevent(STOPPED_PLAYING)
+music = "one"
+arr = ["musik/хакатон_1.wav", "musik/3музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
+rand = random.choice(arr)
+pygame.mixer.music.load(rand)
+pygame.mixer.music.play()
+pygame.mixer.music.set_volume(0.1)
+arr.remove(str(rand))
 
 #-------------------------------------------------------------------------------------------------------------
 
@@ -120,46 +120,46 @@ vx5 = 0.016
 vx6 = 0.014
 vx7 = 0.2
 
-# def Move_star():
-#     global arr, music
-#     if len(arr) == 0:
-#         arr = ["musik/хакатон_1.wav", "musik/3музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
-#     for event in pygame.event.get():
-#         rand = random.choice(list(arr))
-#         print(rand)
-#         pygame.mixer.music.load(rand)
-#         pygame.mixer.music.play()
-#         pygame.mixer.music.set_volume(0.1)
-#         arr.remove(str(rand))
-#         if STOPPED_PLAYING == event.type and music == "one":
-#             pygame.mixer.music.load(rand)
-#             arr.remove(rand)
-#             pygame.mixer.music.play()
-#             music = "two"
-#             continue
-#         if STOPPED_PLAYING == event.type and music == "two":
-#             pygame.mixer.music.load(rand)
-#             arr.remove(rand)
-#             pygame.mixer.music.play()
-#             music = "three"
-#             continue
-#         if STOPPED_PLAYING == event.type and music == "three":
-#             pygame.mixer.music.load(rand)
-#             arr.remove(rand)
-#             pygame.mixer.music.play()
-#             music = "four"
-#             continue
-#         if STOPPED_PLAYING == event.type and music == "four":
-#             pygame.mixer.music.load(rand)
-#             arr.remove(rand)
-#             pygame.mixer.music.play()
-#             music = "one"
-#             continue
+def Move_star():
+    global arr, music
+    if len(arr) == 0:
+        arr = ["musik/хакатон_1.wav", "musik/3музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
+    for event in pygame.event.get():
+        rand = random.choice(list(arr))
+        print(rand)
+        pygame.mixer.music.load(rand)
+        pygame.mixer.music.play()
+        pygame.mixer.music.set_volume(0.1)
+        arr.remove(str(rand))
+        if STOPPED_PLAYING == event.type and music == "one":
+            pygame.mixer.music.load(rand)
+            arr.remove(rand)
+            pygame.mixer.music.play()
+            music = "two"
+            continue
+        if STOPPED_PLAYING == event.type and music == "two":
+            pygame.mixer.music.load(rand)
+            arr.remove(rand)
+            pygame.mixer.music.play()
+            music = "three"
+            continue
+        if STOPPED_PLAYING == event.type and music == "three":
+            pygame.mixer.music.load(rand)
+            arr.remove(rand)
+            pygame.mixer.music.play()
+            music = "four"
+            continue
+        if STOPPED_PLAYING == event.type and music == "four":
+            pygame.mixer.music.load(rand)
+            arr.remove(rand)
+            pygame.mixer.music.play()
+            music = "one"
+            continue
 
-#     c.after(50, Move_star)
-#
-#
-# c.after(50, Move_star)
+    c.after(50, Move_star)
+
+
+c.after(50, Move_star)
 
 #-----------------------------------------------------------------------------------------------------------------------
 
