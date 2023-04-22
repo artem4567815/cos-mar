@@ -1004,6 +1004,7 @@ def joystick_controller():
                         f7 = False
                         f6 = False
                         f9 = False
+                        print(989999999)
                         break
                 if round(joystick.get_axis(1)) == 0:
                     f9 = True
