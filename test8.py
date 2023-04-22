@@ -252,24 +252,12 @@ def menn():
 def draw_menu2():
     global station, leb, leb2, num, btn4, lab, lab2, leb3, one, two, th, notone, nottwo, noth, f6, f7, f8
     if not is_playing:
-        one = c.create_image(195, 35, image=restart_yel, anchor=NW)
-        two = c.create_image(150, 180, image=tab_lid_yel, anchor=NW)
-        th = c.create_image(225, 470, image=NEW_GAME_yel, anchor=NW)
         notone = c.create_image(195, 35, image=restart, anchor=NW)
         nottwo = c.create_image(150, 180, image=tab_lid, anchor=NW)
         noth = c.create_image(225, 470, image=NEW_GAME, anchor=NW)
         objects.append(notone)
         objects.append(nottwo)
         objects.append(noth)
-        objects.append(one)
-        objects.append(two)
-        objects.append(th)
-        if f6:
-            c.tag_lower(notone)
-        if f7:
-            c.tag_lower(nottwo)
-        if f8:
-            c.tag_lower(noth)
         if flag7:
             station = "menu3"
             lab.destroy()
@@ -410,7 +398,7 @@ def click2(event):
             station = "menu3"
     if 150 <= event.x <= 882 and 470 <= event.y <= 749:
         station = "menu"
-        life = 5
+        life = 15
         time0 = 0
         count = 0
         count2 = 0
@@ -721,9 +709,9 @@ def Player():
                     count2 = 0
                     time2 -= 400
 
-                # print(" Счет: " + str(count) + '\n', "Теорема времени: " + str(a) + '\n', "Время: " + str(t) +
-                #       '\n', "Время игры: " + str(time4) + '\n', "time2: " + str(time2) + '\n',
-                #       "----------------------------------")
+                print(" Счет: " + str(count) + '\n', "Теорема времени: " + str(a) + '\n', "Время: " + str(t) +
+                      '\n', "Время игры: " + str(time4) + '\n', "time2: " + str(time2) + '\n',
+                      "----------------------------------")
             should_delete = neightboor2
             neightboor2 = []
         if 4 <= len(counter) <= 7:
@@ -840,6 +828,7 @@ def you_lose():
             c.delete(black_life["life4"])
         if "life5" in black_life:
             c.delete(black_life["life5"])
+            print(454545)
         c.delete(game_objects["dead_line"])
         for block in blocks[:]:
             delete_block(block)
@@ -923,10 +912,6 @@ def onr(event):
         s += 1
         f6 = True
         return
-        # if f7:
-        #     c.tag_raise(nottwo)
-        # if f8:
-        #     c.tag_raise(noth)
 
 def ont(event):
     global state, f6, f7, f8, two, notone, noth, nottwo, s
@@ -935,11 +920,6 @@ def ont(event):
         f7 = True
         s += 1
         return
-        # if f6:
-        #     c.tag_raise(notone)
-        #
-        # if f8:
-        #     c.tag_raise(noth)
 
 def onn(event):
     global f8, f7, f6, th, notone, nottwo, noth, s
@@ -948,11 +928,6 @@ def onn(event):
         f8 = True
         s += 1
         return
-        # if f6:
-        #     c.tag_raise(notone)
-        # if f7:
-        #     c.tag_raise(nottwo)
-
 
 def joystick_controller():
     global f, f1, f2, f3, state, one, two, f6, f7, f8, notone, nottwo, noth, s, f9, flag9, station
@@ -969,11 +944,6 @@ def joystick_controller():
     r = 0
     s = 1
     while True:
-        # button 2 - x
-        # button 0 - a
-        # button 1 - b
-        # axis 5 = >0
-        # button 3 - y
         joystick_count = pygame.joystick.get_count()
         for i in range(joystick_count):
             joystick = pygame.joystick.Joystick(i)
