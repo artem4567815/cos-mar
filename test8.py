@@ -339,7 +339,7 @@ def click2(event):
     if 195 < event.x < 825 and 35 < event.y < 142 and is_playing == False and station == "menu2":
         clear()
         if station == "menu2":
-            life = 5
+            life = 15
             time0 = 0
             count = 0
             count2 = 0
@@ -1031,6 +1031,8 @@ def joystick_controller():
                 selected_green_cannon(None)
             if round(joystick.get_button(1)) == 1:
                 selected_red_cannon(None)
+            if round(joystick.get_button(2)) == 1 and station == "menu":
+                click(None)
             if joystick.get_axis(5) > 0:
                 if f3:
                     try:
