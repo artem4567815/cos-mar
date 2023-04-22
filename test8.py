@@ -67,12 +67,12 @@ pygame.mixer.init()
 STOPPED_PLAYING = pygame.USEREVENT + 1
 pygame.mixer.music.set_endevent(STOPPED_PLAYING)
 music = "one"
-arr = []
-# rand = random.choice(arr)
-# pygame.mixer.music.load(rand)
-# pygame.mixer.music.play()
-# pygame.mixer.music.set_volume(0.1)
-# arr.remove(str(rand))
+arr = ["musik/хакатон_1.wav", "musik/3музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
+rand = random.choice(arr)
+pygame.mixer.music.load(rand)
+pygame.mixer.music.play()
+pygame.mixer.music.set_volume(0.1)
+arr.remove(str(rand))
 
 #-------------------------------------------------------------------------------------------------------------
 
