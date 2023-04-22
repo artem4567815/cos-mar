@@ -992,6 +992,7 @@ def joystick_controller():
                     if f1:
                         move_aim_down()
                         f1 = False
+                if round(joystick.get_button(0)) == 1 and station == "munu2":
                     if s % 3 == 1 and f9:
                         onr(None)
                         f8 = False
@@ -1041,7 +1042,7 @@ def joystick_controller():
                     draw_images()
                 else:
                     station = "menu"
-            if joystick.get_button(0) > 0:
+            if round(joystick.get_button(0)) == 1:
                 if f3:
                     try:
                         spawn_bullet(state)
