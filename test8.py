@@ -125,7 +125,7 @@ def Move_star():
     if len(arr) == 0:
         arr = ["musik/хакатон_1.wav", "musik/3музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
     for event in pygame.event.get():
-        rand = random.choice(list(arr))
+        rand = random.choice(arr)
         print(rand)
         pygame.mixer.music.load(rand)
         pygame.mixer.music.play()
