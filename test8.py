@@ -969,20 +969,25 @@ def joystick_controller():
     r = 0
     s = 1
     while True:
+        # button 2 - x
+        # button 0 - a
+        # button 1 - b
+        # axis 5 = >0
+        # button 3 - y
         joystick_count = pygame.joystick.get_count()
         for i in range(joystick_count):
             joystick = pygame.joystick.Joystick(i)
             joystick.init()
             if station != "menu":
-                if round(joystick.get_axis(0)) > 0:
+                if joystick.get_axis(0) > 0:
                     if f:
                         move_aim_right()
                         f = False
-                if round(joystick.get_axis(0)) < 0:
+                if joystick.get_axis(0) < 0:
                     if f:
                         move_aim_left()
                         f = False
-                if round(joystick.get_axis(1)) == 1:
+                if joystick.get_axis(1) > 0:
                     print(s)
                     if f1:
                         move_aim_down()
@@ -1012,7 +1017,7 @@ def joystick_controller():
                     print(joystick.get_axis(1))
 
 
-                if round(joystick.get_axis(1)) == -1:
+                if joystick.get_axis(1) < 0:
                     if f1:
                         move_aim_up()
                         f1 = False
@@ -1020,13 +1025,13 @@ def joystick_controller():
                     f = True
                 if round(joystick.get_axis(1)) == 0:
                     f1 = True
-            if round(joystick.get_button(3)) == 1:
-                selected_blue_cannon(None)
-            if round(joystick.get_button(1)) == 1:
-                selected_green_cannon(None)
-            if round(joystick.get_button(4)) == 1:
-                selected_red_cannon(None)
             if round(joystick.get_button(0)) == 1:
+                selected_blue_cannon(None)
+            if round(joystick.get_button(2)) == 1:
+                selected_green_cannon(None)
+            if round(joystick.get_button(1)) == 1:
+                selected_red_cannon(None)
+            if joystick.get_axis(5) > 0:
                 if f3:
                     try:
                         spawn_bullet(state)
