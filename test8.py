@@ -31,7 +31,7 @@ time0 = 0
 vy = 102
 count = 0
 count2 = 0
-life = 30
+life = 15
 random_var = StringVar()
 blocks = []
 
@@ -620,22 +620,22 @@ def is_neightboor(block, neightboor):
 def life_funk():
     global life, flag, flag15
     life -= 1
-    if life == 24:
+    if life == 14:
         black_life["life1"] = c.create_image(325, 620, image=images["black_hp"], tag='down2',
                                              anchor=NW)
         c.tag_raise(game_objects["aim"], game_objects["aim2"])
         flag15 = True
-    if life == 18:
+    if life == 11:
         black_life["life2"] = c.create_image(245, 620, image=images["black_hp"], tag='down2',
                                              anchor=NW)
         c.tag_raise(game_objects["aim"], game_objects["aim2"])
         flag15 = True
-    if life == 12:
+    if life == 6:
         black_life["life3"] = c.create_image(165, 620, image=images["black_hp"], tag='down2',
                                              anchor=NW)
         c.tag_raise(game_objects["aim"], game_objects["aim2"])
         flag15 = True
-    if life == 6:
+    if life == 1:
         black_life["life4"] = c.create_image(85, 620, image=images["black_hp"], tag='down2',
                                              anchor=NW)
         c.tag_raise(game_objects["aim"], game_objects["aim2"])
