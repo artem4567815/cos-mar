@@ -67,12 +67,12 @@ pygame.mixer.init()
 STOPPED_PLAYING = pygame.USEREVENT + 1
 pygame.mixer.music.set_endevent(STOPPED_PLAYING)
 music = "one"
-arr = ["musik/хакатон_1.wav", "musik/3музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
-rand = random.choice(arr)
-pygame.mixer.music.load(rand)
-pygame.mixer.music.play()
-pygame.mixer.music.set_volume(0.1)
-arr.remove(str(rand))
+arr = []
+# rand = random.choice(arr)
+# pygame.mixer.music.load(rand)
+# pygame.mixer.music.play()
+# pygame.mixer.music.set_volume(0.1)
+# arr.remove(str(rand))
 
 #-------------------------------------------------------------------------------------------------------------
 
@@ -123,9 +123,14 @@ vx7 = 0.2
 def Move_star():
     global arr, music
     if len(arr) == 0:
-        arr = ["musik/хакатон_1.wav", "3musik/музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
+        arr = ["musik/хакатон_1.wav", "musik/3музыка.wav", "musik/4musik.wav", "musik/musik5.wav"]
     for event in pygame.event.get():
-        rand = random.choice(arr)
+        rand = random.choice(list(arr))
+        print(rand)
+        pygame.mixer.music.load(rand)
+        pygame.mixer.music.play()
+        pygame.mixer.music.set_volume(0.1)
+        arr.remove(str(rand))
         if STOPPED_PLAYING == event.type and music == "one":
             pygame.mixer.music.load(rand)
             arr.remove(rand)
@@ -353,7 +358,6 @@ def click2(event):
         for user in users:
             if user["name"] == name and user["count"] > count:
                 has_user = True
-                print(8)
                 break
             if user["name"] == name and user["count"] < count:
                 ind = users.index({"name": user["name"], "count": user["count"]})
